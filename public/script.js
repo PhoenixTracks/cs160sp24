@@ -76,43 +76,48 @@ search(2);
 });
 
 function addTimeFrame() {
-const timeFramesContainer = document.getElementById('timeFrames');
-timeFramesContainer.innerHTML = '';
+  const timeFramesContainer = document.getElementById('timeFrames');
+  timeFramesContainer.innerHTML = '';
 
-for (let i = 0; i < selectedItems2.length; i++) {
-  const skill = selectedItems2[i];
-  const selectContainer = document.createElement('div'); // Create a new container for each item
-  const select = document.createElement('select');
+  for (let i = 0; i < selectedItems2.length; i++) {
+    const skill = selectedItems2[i];
+    const selectContainer = document.createElement('div'); 
+    const select = document.createElement('select');
 
-  for (let j = 1; j <= 6; j++) {
-    const option = document.createElement('option');
-    option.value = j;
-    option.text = j + ' month(s)';
-    select.appendChild(option);
+    select.id = 'select_' + i;
+
+    for (let j = 1; j <= 6; j++) {
+      const option = document.createElement('option');
+      option.value = j;
+      option.text = j + ' month(s)';
+      select.appendChild(option);
+    }
+
+    const label = document.createElement('label');
+    label.innerHTML = 'Time frame for ' + skill + ':  ';
+    label.setAttribute('for', select.id); 
+
+    selectContainer.appendChild(label);
+    selectContainer.appendChild(select);
+    timeFramesContainer.appendChild(selectContainer);
+  }
+}
+
+var skillTimeFrames = {};
+document.getElementById("submit").addEventListener("click", function() {
+
+
+  for (var i = 0; i < selectedItems2.length; i++) {
+    var skill = selectedItems2[i];
+    var select = document.getElementById('select_' + i); // Select by id
+    console.log(select);
+    var timeFrame = select.value;
+
+    skillTimeFrames[skill] = timeFrame;
   }
 
-  const label = document.createElement('label');
-  label.innerHTML = 'Time frame for ' + skill + ': ';
-  label.appendChild(select);
-
-  selectContainer.appendChild(label); 
-  timeFramesContainer.appendChild(selectContainer);
-}
-}
-
-document.getElementById("submit").addEventListener("click", function() {
-var skillTimeFrames = {};
-
-for (var i = 0; i < selectedItems2.length; i++) {
-  var skill = selectedItems2[i];
-  var select = document.querySelector('select[label="Time frame for ' + skill + ':"]');
-  console.log(select);
-  var timeFrame = select.value;
-
-  skillTimeFrames[skill] = timeFrame;
-}
-
-console.log(skillTimeFrames);
+  localStorage.clear();
+  saveToLocalStorage();
 });
 
 
@@ -120,22 +125,5 @@ function saveToLocalStorage() {
   localStorage.setItem('selectedItems1', JSON.stringify(selectedItems1));
   localStorage.setItem('selectedItems2', JSON.stringify(selectedItems2));
   localStorage.setItem('skillTimeFrames', JSON.stringify(skillTimeFrames));
+  localStorage.setItem("existUser", 1);
 }
-
-// document.getElementById("submit").addEventListener("click", function() {
-//   var skillTimeFrames = {};
-
-//   for (var i = 0; i < selectedItems2.length; i++) {
-//     var skill = selectedItems2[i];
-//     var selector = 'select[label="Time frame for ' + skill + ':"]';
-//     console.log("Selector:", selector);
-//     var select = document.querySelector(selector);
-//     console.log("Select:", select);
-//     var timeFrame = select.value;
-
-//     skillTimeFrames[skill] = timeFrame;
-//   }
-
-//   console.log(skillTimeFrames);
-//   // saveToLocalStorage(); 
-// });
