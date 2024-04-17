@@ -118,6 +118,7 @@ document.getElementById("submit").addEventListener("click", function() {
 
   localStorage.clear();
   saveToLocalStorage();
+  window.location.href = 'dashboard.html';
 });
 
 
