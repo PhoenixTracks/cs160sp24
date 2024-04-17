@@ -1,0 +1,22 @@
+.result-item {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #6dc06d;
+    color: #fff;
+}
+
+.selected::after {
+    content: '✕';
+    margin-left: 5px;
+}
+
+.selected:hover::after {
+    cursor: pointer;
+}
