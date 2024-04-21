@@ -1,32 +1,127 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Phoenix Tracks</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<style>
+  /* Add your CSS styling here */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  .dashboard-nav {
+    list-style-type: none;
+  }
+  .dashboard-nav li {
+    display: inline;
+    margin-right: 20px;
+  }
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Fira+Sans"
-      rel="stylesheet"
-    />
-    <!-- let's include the css file for bootstrap, then our custom css -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/vendor/bootstrap/css/bootstrap.css"
-    />
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
-  </head>
+  
+  
+  .dashboard-nav {
+    list-style-type: none;
+    padding: 0;
+  }
+  .dashboard-nav a {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    background-color: #e7e7e7; /* Button color */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  .dashboard-nav a:hover {
+    background-color: #ddd; /* Hover effect color change */
+  }
+  .dashboard-welcome {
+    text-align: center;
+  }
+  .skills-section, .applications-section, .courses-section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
 
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h1>Dashboard</h1>
-          
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
+<div class="dashboard-header">
+  <h1>Dashboard</h1>
+  <ul class="dashboard-nav">
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="jobs.html">Jobs</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="mytrack.html">MyTrack</a></li>
+  </ul>
+</div>
+
+<div class="dashboard-welcome">
+  <h2>Welcome back, [username]</h2>
+</div>
+
+<div class="dashboard-content">
+  <div class="skills-section">
+    <h3>Your Skills</h3>
+    <ul id="skillsList"></ul> <!-- This is where the skills will be displayed -->
+  </div>
+
+  <div class="applications-section">
+    <h3>Application</h3>
+    <!-- Add your application bars here -->
+  </div>
+
+  <div class="courses-section">
+    <h3>Courses</h3>
+    <!-- Add your courses content here -->
+  </div>
+</div>
+
+</body>
 </html>
+
+
+<script>
+  // functions to retrive user imput from get started log in quiz and display current skills
+  document.addEventListener("DOMContentLoaded", function() {
+    loadSkills();
+  });
+  
+  function loadSkills() {
+    const skillsContainer = document.getElementById("skillsList");
+    skillsContainer.innerHTML = ""; // Clear existing entries
+  
+    // Retrieve stored data
+    const selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || [];
+    const selectedItems2 = JSON.parse(localStorage.getItem('selectedItems2')) || [];
+    const skillTimeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
+  
+    // Combine and display skills from selectedItems1 and selectedItems2 with time frames
+    selectedItems1.forEach(skill => {
+      const skillElement = document.createElement('li');
+      skillElement.textContent = skill;
+      skillsContainer.appendChild(skillElement);
+    });
+  
+    selectedItems2.forEach(skill => {
+      const skillElement = document.createElement('li');
+      skillElement.textContent = `${skill} - ${skillTimeFrames[skill] || 'Not set'} month(s)`;
+      skillsContainer.appendChild(skillElement);
+    });
+  }
+  </script>
+  
