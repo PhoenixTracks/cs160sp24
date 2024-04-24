@@ -9,6 +9,10 @@
   body {
     font-family: Arial, sans-serif;
   }
+  .active-nav {
+    font-weight: bold;
+    background-color: blue;
+  }
   .dashboard-header {
     display: flex;
     justify-content: space-between;
@@ -22,9 +26,6 @@
     display: inline;
     margin-right: 20px;
   }
-
-  
-  
   .dashboard-nav {
     list-style-type: none;
     padding: 0;
@@ -63,7 +64,7 @@
 <div class="dashboard-header">
   <h1>Dashboard</h1>
   <ul class="dashboard-nav">
-    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="dashboard.html" class="active-nav">Dashboard</a></li>
     <li><a href="jobs.html">Jobs</a></li>
     <li><a href="courses.html">Courses</a></li>
     <li><a href="mytrack.html">MyTrack</a></li>
