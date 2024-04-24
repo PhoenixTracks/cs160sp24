@@ -64,7 +64,6 @@
     align-items: center;
     justify-content: center;
   }
-
   .job-card {
     background-color: #fff;
     border-radius: 5px;
@@ -72,11 +71,14 @@
     padding: 10px;
     transition: transform 0.3s ease-in-out;
   }
-
+  .job-card img {
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+  }
   .job-card:hover {
     transform: translateY(-0.5rem) scale(1.02);
   }
-
   .apply-btn {
     background-color: #007bff;
     color: white;
@@ -127,6 +129,46 @@
       <button class="apply-btn">APPLY</button>
     </div>
   </div>
+
+  <script>
+    function loadJobs() {
+      fetch('jobs.csv')
+        .then(response => response.text())
+        .then(text => {
+          const jobs = parseCSV(text);
+          displayJobs(jobs);
+        });
+    }
+
+    function parseCSV(text) {
+      const lines = text.split('\n');
+      return lines.map(line => {
+        const [logo, company, title, description, salary, skills, email] = line.split('^');
+        return { logo, company, title, description, salary, skills, email };
+      });
+    }
+
+    function displayJobs(jobs) {
+      const container = document.querySelector('.jobs-listing');
+      container.innerHTML = '';
+      jobs.forEach(job => {
+        const jobElement = document.createElement('div');
+        jobElement.className = 'job-card';
+        jobElement.innerHTML = `
+          <img src="${job.logo}" alt="${job.company} Logo">
+          <h2>${job.company}</h2>
+          <h2>${job.title}</h2>
+          <p>${job.description}</p>
+          <p>Salary: ${job.salary}</p>
+          <p>Skills: ${job.skills}</p>
+          <a href="mailto:${job.email}" class="apply-btn">Contact</a>
+        `;
+        container.appendChild(jobElement);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadJobs);
+  </script>
 
 </body>
 </html>
