@@ -13,8 +13,10 @@ const textData = [
   "Forklift Driving",
   "Engineering",
   "Cooking",
-  "construction",
-  "accounting",
+  "Construction",
+  "Accounting",
+  "Photoshop",
+  "Git",
   "Communication", "Leadership", "Teamwork", "Creativity", "Adaptability", "Problem-Solving", "Technical", "Analytical", "Organization", "Detail-Oriented", "Innovation", "Collaboration", "Efficiency", "Reliability", "Initiative", "Empathy", "Interpersonal", "Motivation", "Flexibility", "Critical-Thinking"
 ];
 

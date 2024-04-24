@@ -79,7 +79,7 @@
   .job-card:hover {
     transform: translateY(-0.5rem) scale(1.02);
   }
-  .apply-btn {
+  .view-btn {
     background-color: #007bff;
     color: white;
     border: none;
@@ -87,6 +87,26 @@
     padding: 10px 20px;
     cursor: pointer;
     float: right;
+  }
+  .view-btn:hover {
+    background-color: #0056b3;
+  }
+  .search-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .search-btn:hover {
+    background-color: #0056b3;
+  }
+  .search-bar {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 10px;
   }
 </style>
 </head>
@@ -102,40 +122,47 @@
   </ul>
   </div>
 
+  <div style="text-align: center;">
+    <input type="text" id="searchBar" placeholder="Search..." class="search-bar">
+    <button onclick="toggleFilter()" id="filterButton" class="search-btn">Filter by Skills</button>
+  </div>
+
   <div class="jobs-listing">
     <div class="job-card">
       <h2>Job Title</h2>
       <p>Job Description...</p>
-      <button class="apply-btn">APPLY</button>
+      <button class="view-btn">View</button>
     </div>
     <div class="job-card">
       <h2>Job Title</h2>
       <p>Job Description...</p>
-      <button class="apply-btn">APPLY</button>
+      <button class="view-btn">View</button>
     </div>
     <div class="job-card">
       <h2>Job Title</h2>
       <p>Job Description...</p>
-      <button class="apply-btn">APPLY</button>
+      <button class="view-btn">View</button>
     </div>
     <div class="job-card">
       <h2>Job Title</h2>
       <p>Job Description...</p>
-      <button class="apply-btn">APPLY</button>
+      <button class="view-btn">View</button>
     </div>
     <div class="job-card">
       <h2>Job Title</h2>
       <p>Job Description...</p>
-      <button class="apply-btn">APPLY</button>
+      <button class="view-btn">View</button>
     </div>
   </div>
 
   <script>
+    var jobs = null;
+    let filterActive = false;
     function loadJobs() {
       fetch('jobs.csv')
         .then(response => response.text())
         .then(text => {
-          const jobs = parseCSV(text);
+          jobs = parseCSV(text);
           displayJobs(jobs);
         });
     }
@@ -154,19 +181,61 @@
       jobs.forEach(job => {
         const jobElement = document.createElement('div');
         jobElement.className = 'job-card';
-        jobElement.innerHTML = `
-          <img src="${job.logo}" alt="${job.company} Logo">
+        jobElement.innerHTML = 
+        `<img src="${job.logo}" alt="${job.company} Logo">
           <h2>${job.company}</h2>
           <h2>${job.title}</h2>
           <p>${job.description}</p>
           <p>Salary: ${job.salary}</p>
           <p>Skills: ${job.skills}</p>
-          <a href="mailto:${job.email}" class="apply-btn">Contact</a>
-        `;
+          <a href="mailto:${job.email}" class="view-btn" style="text-decoration: none;">View</a>`;
         container.appendChild(jobElement);
+        
       });
+      
     }
 
+    function toggleFilter() {
+      filterActive = !filterActive;
+      if (filterActive) {
+        document.getElementById('filterButton').textContent = 'Show All Jobs';
+        localStorage.setItem('filterClicked', 'true');
+        filterJobs();
+      } else {
+        document.getElementById('filterButton').textContent = 'Filter by Skills';
+        localStorage.removeItem('filterClicked');
+        loadJobs();
+      }
+    }
+
+    function filterJobs() {
+      const selectedSkills = localStorage.getItem('selectedItems1');
+      const filteredJobs = jobs.filter(job => {
+        const jobSkillsArray = job.skills.split(',').map(skill => skill.trim());
+        return jobSkillsArray.some(skill => selectedSkills.includes(skill));
+      });
+      displayJobs(filteredJobs);
+    }
+
+    function searchJobs() {
+      const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+      if (searchTerm === "") {
+        displayJobs(jobs);
+        return;
+      }
+      const searchedJobs = jobs.filter(job => {
+        return (
+          job.company.toLowerCase().includes(searchTerm) ||
+          job.title.toLowerCase().includes(searchTerm) ||
+          job.description.toLowerCase().includes(searchTerm) ||
+          job.skills.toLowerCase().includes(searchTerm) ||
+          job.salary.toLowerCase().includes(searchTerm)
+        );
+      });
+      displayJobs(searchedJobs);
+    }
+
+    document.getElementById('searchBar').addEventListener('input', searchJobs);
     window.addEventListener('DOMContentLoaded', loadJobs);
   </script>
 

@@ -34,17 +34,17 @@
     align-items: center;
     text-decoration: none;
     color: #333;
-    background-color: #e7e7e7; /* Button color */
+    background-color: #e7e7e7;
     border: none;
     padding: 10px 20px;
     text-align: center;
     display: inline-block;
     margin-right: 10px;
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    border-radius: 5px;
+    transition: background-color 0.3s;
   }
   .courses-nav a:hover {
-    background-color: #ddd; /* Hover effect color change */
+    background-color: #ddd;
   }
   .dashboard-welcome {
     text-align: center;
@@ -55,19 +55,79 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+  .courses-listing {
+    display: grid;
+    grid-template-columns: 0.6fr;
+    gap: 30px;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  .course-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .course-card img {
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+  }
+  .course-card:hover {
+    transform: translateY(-0.5rem) scale(1.02);
+  }
+  .view-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    float: right;
+  }
 </style>
 </head>
 <body>
+  <div class="courses-header">
+    <h1>Courses</h1>
+    <ul class="courses-nav">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="courses.html" class="active-nav">Courses</a></li>
+      <li><a href="mytrack.html">MyTrack</a></li>
+      <li><a href="profile.html">Profile</a></li>
+    </ul>
+  </div>
 
-<div class="courses-header">
-  <h1>Courses</h1>
-  <ul class="courses-nav">
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="jobs.html">Jobs</a></li>
-    <li><a href="courses.html" class="active-nav">Courses</a></li>
-    <li><a href="mytrack.html">MyTrack</a></li>
-    <li><a href="profile.html">Profile</a></li>
-  </ul>
-</div>
+  <div class="courses-listing">
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">View</button>
+    </div>
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">View</button>
+    </div>
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">View</button>
+    </div>
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">View</button>
+    </div>
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">View</button>
+    </div>
+  </div>
+
 </body>
 </html>
