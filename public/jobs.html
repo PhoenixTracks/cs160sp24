@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jobs</title>
 <style>
-  /* Add  CSS styling here */
   body {
     font-family: Arial, sans-serif;
+    
   }
   .active-nav {
     font-weight: bold;
@@ -25,9 +25,6 @@
     display: inline;
     margin-right: 20px;
   }
-
-  
-  
   .jobs-nav {
     list-style-type: none;
     padding: 0;
@@ -38,17 +35,17 @@
     align-items: center;
     text-decoration: none;
     color: #333;
-    background-color: #e7e7e7; /* Button color */
+    background-color: #e7e7e7;
     border: none;
     padding: 10px 20px;
     text-align: center;
     display: inline-block;
     margin-right: 10px;
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    border-radius: 5px;
+    transition: background-color 0.3s;
   }
   .jobs-nav a:hover {
-    background-color: #ddd; /* Hover effect color change */
+    background-color: #ddd;
   }
   .dashboard-welcome {
     text-align: center;
@@ -59,11 +56,40 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+  .jobs-listing {
+    display: grid;
+    grid-template-columns: 0.6fr;
+    gap: 30px;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .job-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .job-card:hover {
+    transform: translateY(-0.5rem) scale(1.02);
+  }
+
+  .apply-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    float: right;
+  }
 </style>
 </head>
 <body>
-
-<div class="jobs-header">
+  <div class="jobs-header">
   <h1>Jobs</h1>
   <ul class="jobs-nav">
     <li><a href="dashboard.html">Dashboard</a></li>
@@ -72,6 +98,35 @@
     <li><a href="mytrack.html">MyTrack</a></li>
     <li><a href="profile.html">Profile</a></li>
   </ul>
-</div>
+  </div>
+
+  <div class="jobs-listing">
+    <div class="job-card">
+      <h2>Job Title</h2>
+      <p>Job Description...</p>
+      <button class="apply-btn">APPLY</button>
+    </div>
+    <div class="job-card">
+      <h2>Job Title</h2>
+      <p>Job Description...</p>
+      <button class="apply-btn">APPLY</button>
+    </div>
+    <div class="job-card">
+      <h2>Job Title</h2>
+      <p>Job Description...</p>
+      <button class="apply-btn">APPLY</button>
+    </div>
+    <div class="job-card">
+      <h2>Job Title</h2>
+      <p>Job Description...</p>
+      <button class="apply-btn">APPLY</button>
+    </div>
+    <div class="job-card">
+      <h2>Job Title</h2>
+      <p>Job Description...</p>
+      <button class="apply-btn">APPLY</button>
+    </div>
+  </div>
+
 </body>
 </html>
