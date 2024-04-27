@@ -48,6 +48,7 @@
   }
   .dashboard-welcome {
     text-align: center;
+    
   }
   .skills-section, .applications-section, .courses-section {
     margin: 20px;
@@ -55,6 +56,75 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+  .dashboard-content {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-start;
+    align-items: flex-start; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+  }
+  
+  .skills-section, .applications-section, .courses-section {
+    
+    /*flex-basis: calc(33.333% - 20px); /* Adjust the width to fit three items in a row */*/
+    flex-basis: calc((100% - 40px) / 3);
+    box-sizing: border-box; 
+  }
+
+
+  /*profile picture */
+  .profile-pic-container {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        color: white;
+    }
+    .profile-pic {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        margin-left: 15%;
+        
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        border: 3px solid black;
+    }
+    .profile-pic:hover .camera-icon {
+        display: block;
+    }
+    .camera-icon {
+    position: absolute;
+    width: 40px; 
+    height: 40px; 
+    bottom: -20px; /* Half of the height to make it center on the border */
+    left: calc(50% - 20px); /* Centers the icon. */
+    background: white; /* Background color of the icon */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3; /* Ensure this is higher than the profile picture's z-index */
+}
+
+    .profile-pic input[type='file'] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .profile-info {
+        margin-top: 8px;
+    }
+
+
+    
 </style>
 </head>
 <body>
@@ -73,6 +143,18 @@
 <div class="dashboard-welcome">
   <h2>Welcome back, [username]</h2>
 </div>
+
+
+<div class="profile-pic-container">
+  <div class="profile-pic" style="background-image: url('default-profile-pic.jpg');">
+      
+      <div class="camera-icon glyphicon glyphicon-camera">📷</div>
+      
+      <input type="File" name="fileToUpload" id="fileToUpload">
+  </div>
+  
+</div>
+
 
 <div class="dashboard-content">
   <div class="skills-section">
@@ -96,32 +178,53 @@
 
 
 <script>
-  // functions to retrive user imput from get started log in quiz and display current skills
   document.addEventListener("DOMContentLoaded", function() {
-    loadSkills();
+      loadSkills();
+      loadProfilePicture(); // Load the profile picture if it exists in localStorage
   });
   
   function loadSkills() {
-    const skillsContainer = document.getElementById("skillsList");
-    skillsContainer.innerHTML = ""; // Clear existing entries
+      const skillsContainer = document.getElementById("skillsList");
+      skillsContainer.innerHTML = ""; // Clear existing entries
   
-    // Retrieve stored data
-    const selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || [];
-    const selectedItems2 = JSON.parse(localStorage.getItem('selectedItems2')) || [];
-    const skillTimeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
+      // Retrieve stored data
+      const selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || [];
+      const selectedItems2 = JSON.parse(localStorage.getItem('selectedItems2')) || [];
+      const skillTimeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
   
-    // Combine and display skills from selectedItems1 and selectedItems2 with time frames
-    selectedItems1.forEach(skill => {
-      const skillElement = document.createElement('li');
-      skillElement.textContent = skill;
-      skillsContainer.appendChild(skillElement);
-    });
+      // Display skills
+      selectedItems1.forEach(skill => {
+          const skillElement = document.createElement('li');
+          skillElement.textContent = skill;
+          skillsContainer.appendChild(skillElement);
+      });
   
-    selectedItems2.forEach(skill => {
-      const skillElement = document.createElement('li');
-      skillElement.textContent = `${skill} - ${skillTimeFrames[skill] || 'Not set'} month(s)`;
-      skillsContainer.appendChild(skillElement);
-    });
+      selectedItems2.forEach(skill => {
+          const skillElement = document.createElement('li');
+          skillElement.textContent = `${skill} - ${skillTimeFrames[skill] || 'Not set'} month(s)`;
+          skillsContainer.appendChild(skillElement);
+      });
   }
+  
+  // Load the profile picture from localStorage
+  function loadProfilePicture() {
+      const savedImage = localStorage.getItem('profilePic');
+      if (savedImage) {
+          document.querySelector('.profile-pic').style.backgroundImage = `url('${savedImage}')`;
+      }
+  }
+  
+  // Event listener for file input change to handle image uploading
+  document.getElementById('fileToUpload').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+              document.querySelector('.profile-pic').style.backgroundImage = `url('${e.target.result}')`;
+              localStorage.setItem('profilePic', e.target.result); // Save the image data in localStorage
+          };
+          reader.readAsDataURL(file);
+      }
+  });
   </script>
   
