@@ -101,6 +101,11 @@
     </ul>
   </div>
 
+  <div style="text-align: center;">
+    <input type="text" id="searchBar" placeholder="Search..." class="search-bar">
+    <button onclick="toggleFilter()" id="filterButton" class="search-btn">Filter by Skills to Learn</button>
+  </div>
+
   <div class="courses-listing">
     <div class="course-card">
       <h2>Course Title</h2>
@@ -128,6 +133,90 @@
       <button class="view-btn">View</button>
     </div>
   </div>
+  <script>
+    var courses = null;
+    let filterActive = false;
+    function loadCourses() {
+      fetch('courses.csv')
+        .then(response => response.text())
+        .then(text => {
+          courses = parseCSV(text);
+          displayCourses(courses);
+        });
+    }
 
+    function parseCSV(text) {
+      const lines = text.split('\n');
+      return lines.map(line => {
+        const [title, description] = line.split('^');
+        return {title, description};
+      });
+    }
+
+    function displayCourses(courses) {
+      const container = document.querySelector('.courses-listing');
+      container.innerHTML = '';
+      courses.forEach(course => {
+        const courseElement = document.createElement('div');
+        courseElement.className = 'course-card';
+        courseElement.innerHTML = 
+          `<h2>${course.title}</h2>
+          <p>${course.description}</p>
+          <a href="https://www.google.com" target="_blank" class="view-btn" style="text-decoration: none;">View</a>`;
+        container.appendChild(courseElement);
+      });
+    }
+
+    function adjustTextareaHeight(textarea) {
+      textarea.style.height = 'auto'; 
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+
+    function closePopup() {
+      document.querySelector('.popup-background').style.display = 'none';
+      document.getElementById('email-body').value = "";
+    }
+
+
+    function toggleFilter() {
+      filterActive = !filterActive;
+      if (filterActive) {
+        document.getElementById('filterButton').textContent = 'Show All Courses';
+        localStorage.setItem('filterClicked', 'true');
+        filterCourses();
+      } else {
+        document.getElementById('filterButton').textContent = 'Filter by Skills';
+        localStorage.removeItem('filterClicked');
+        loadCourses();
+      }
+    }
+
+    function filterCourses() {
+      const selectedSkills = localStorage.getItem('selectedItems2');
+      const filteredCourses = courses.filter(course => {
+        const courseSkillsArray = course.skills.split(',').map(skill => skill.trim());
+        return courseSkillsArray.some(skill => selectedSkills.includes(skill));
+      });
+      displayCourses(filteredCourses);
+    }
+
+    function searchCourses() {
+      const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+      if (searchTerm === "") {
+        displayCourses(courses);
+        return;
+      }
+      const searchedCourses = courses.filter(course => {
+        return (
+          course.title.toLowerCase().includes(searchTerm) ||
+          course.description.toLowerCase().includes(searchTerm)
+        );
+      });
+      displayCourses(searchedCourses);
+    }
+
+    document.getElementById('searchBar').addEventListener('input', searchCourses);
+    window.addEventListener('DOMContentLoaded', loadCourses);
+  </script>
 </body>
 </html>
