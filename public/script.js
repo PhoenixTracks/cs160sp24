@@ -125,8 +125,9 @@ document.getElementById("submit").addEventListener("click", function() {
 
 
 function saveToLocalStorage() {
-  localStorage.setItem('selectedItems1', JSON.stringify(selectedItems1));
+  localStorage.setItem('selectedItems1', JSON.stringify(selectedItems1)); // existing skills
   localStorage.setItem('selectedItems2', JSON.stringify(selectedItems2));
-  localStorage.setItem('skillTimeFrames', JSON.stringify(skillTimeFrames));
+  localStorage.setItem('skillTimeFrames', JSON.stringify(skillTimeFrames)); // dictionary -> key: skill, value: # of months
   localStorage.setItem("existUser", 1);
 }
+
