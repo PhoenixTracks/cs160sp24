@@ -85,13 +85,6 @@
     <li><a href="profile.html">Profile</a></li>
   </ul>
 </div>
-<div id="dedicationForm">
-    <h3>How many hours a day would you like to dedicate?</h3>
-    <form>
-        <input type="number" id="dedicationHours" name="dedicationHours" min="1" max="24" placeholder="Enter hours per day" required>
-        <button type="button" onclick="setDedication()">Set Hours</button>
-    </form>
-</div>
 <div id="timelineDisplay">
   <h2>Career Track Timeline</h2>
   <div id="timelineList" class="timeline-row"></div>
@@ -102,25 +95,23 @@ document.addEventListener("DOMContentLoaded", function() {
     buildTimeline();
 });
 
-let dedicationHours = 0; // Default value
+let dailyHours = localStorage.getItem('dailyHours') || 0; 
 let selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || [];
 let skillTimeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
 let maxSkillDuration = Math.max(0, ...Object.values(skillTimeFrames));
 
 async function setDedication() {
-    const hours = document.getElementById('dedicationHours').value;
-    dedicationHours = parseInt(hours, 10);
-    await postData(selectedItems1, skillTimeFrames, dedicationHours, maxSkillDuration);
+    await postData(selectedItems1, skillTimeFrames, dailyHours, maxSkillDuration);
     buildTimeline();
 }
 
-async function postData(selectedItems1, skillTimeFrames, dedicationHours, maxSkillDuration) {
-  // Function to format skills into a readable string, working directly with an object
+async function postData(selectedItems1, skillTimeFrames, dailyHours, maxSkillDuration) {
+  // converts skillTimeFrames (js object) -> readable string by GPT when passed in 
   function formatSkillsReadable(skillTimeFrames) {
     let readableString = "";
-    let index = 0; // To keep track of numbering in the output string
+    let index = 0; 
     for (let skill in skillTimeFrames) {
-      if (skillTimeFrames.hasOwnProperty(skill)) { // Check if the key is actually a property of the object
+      if (skillTimeFrames.hasOwnProperty(skill)) { // check if the key is actually a property of the object
         index++;
         readableString += `${index}. Skill: ${skill}, Timeframe: ${skillTimeFrames[skill]}\n`;
       }
@@ -139,7 +130,7 @@ async function postData(selectedItems1, skillTimeFrames, dedicationHours, maxSki
     body: JSON.stringify({
       "skills": selectedItems1,
       "desiredskills": readableSkills,
-      "hours": dedicationHours,
+      "hours": dailyHours,
       "months": maxSkillDuration,
     }),
   }).then(response => response.text());

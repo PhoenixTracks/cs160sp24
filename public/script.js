@@ -23,6 +23,7 @@ const textData = [
 
 let selectedItems1 = []; 
 let selectedItems2 = []; 
+let dailyHours = 0;
 
 function search(num) {
 const query = document.getElementById("searchBox" + num).value.trim().toLowerCase();
@@ -76,6 +77,8 @@ document.getElementById("searchBox1").addEventListener("input", function() {
 document.getElementById("searchBox2").addEventListener("input", function() {
 search(2);
 });
+document.getElementById("dailyHoursInput").addEventListener("input", addDailyHours);
+
 
 function addTimeFrame() {
   const timeFramesContainer = document.getElementById('timeFrames');
@@ -105,6 +108,11 @@ function addTimeFrame() {
   }
 }
 
+function addDailyHours() {
+  dailyHours = parseInt(document.getElementById("dailyHoursInput").value, 10) || 0;
+}
+  
+
 var skillTimeFrames = {};
 document.getElementById("submit").addEventListener("click", function() {
 
@@ -133,5 +141,6 @@ function saveToLocalStorage() {
   localStorage.setItem('selectedItems1', JSON.stringify(selectedItems1)); // existing skills
   localStorage.setItem('selectedItems2', JSON.stringify(selectedItems2));
   localStorage.setItem('skillTimeFrames', JSON.stringify(skillTimeFrames)); // dictionary -> key: skill, value: # of months
+  localStorage.setItem('dailyHours', dailyHours);
   localStorage.setItem("existUser", 1);
 }

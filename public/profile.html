@@ -134,26 +134,31 @@
   <h1>Update Profile</h1>
   <div class="quiz-question">
     <h4>Question 1</h4>
-    <h6>What skills do you have?</h6>
-    <input type="text" id="searchBox1" class="quiz-input" placeholder="Search...">
-             <div id="results1"></div>
+    <h6>Full Name</h6>
+    <input type="text" id="nameBox" class="quiz-input" placeholder="Jane Doe">
   </div>
   <div class="quiz-question">
     <h4>Question 2</h4>
-    <h6>What skills would you like to learn?</h6>
-    <input type="text" id="searchBox2" class="quiz-input" placeholder="Search..." onchange="addTimeFrame(this.value)">
-          <div id="results2"></div>
+    <h6>What skills do you have?</h6>
+    <input type="text" id="searchBox1" class="quiz-input" placeholder="Search...">
+    <div id="results1"></div>
   </div>
   <div class="quiz-question">
     <h4>Question 3</h4>
-    <div id="timeFrames"></div>
+    <h6>What skills would you like to learn?</h6>
+    <input type="text" id="searchBox2" class="quiz-input" placeholder="Search...">
+    <div id="results2"></div>
   </div>
   <div class="quiz-question">
     <h4>Question 4</h4>
-    <h6>Full Name</h6>
-    <input type="text" id="nameBox" placeholder="Jane Doe" class="quiz-input">
-             <div id="name"></div>
+    <div id="timeFrames"></div>
   </div>
+  <div class="quiz-question">
+    <h4>Question 5</h4>
+    <h6>How many hours a day would you like to dedicate?</h6>
+    <input type="number" id="dailyHoursInput" class="quiz-input" placeholder="Hours per day" min="1" max="10">
+  </div>
+
   <button id="submit" class="quiz-button">Submit Quiz</button>
 </div>
 
@@ -165,10 +170,12 @@
     var skillsHave = JSON.parse(localStorage.getItem('selectedItems1')) || [];
     var skillsLearn = JSON.parse(localStorage.getItem('selectedItems2')) || [];
     var timeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
+    var dailyHours = localStorage.getItem('dailyHours') || 0;
 
     var skillsHaveList = document.getElementById('skillsHaveList');
     var skillsLearnList = document.getElementById('skillsLearnList');
     var timeFramesList = document.getElementById('timeFramesList');
+    document.getElementById('dailyHoursInput').value = dailyHours;
 
     skillsHave.forEach(function(skill) {
       var li = document.createElement('li');
