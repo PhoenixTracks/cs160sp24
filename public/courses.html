@@ -87,6 +87,17 @@
     cursor: pointer;
     float: right;
   }
+  .welcome-message {
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    font-size: 16px;
+    /*color: #2a2a2a; /* Dark grey color for text */
+    /*background-color: #f0f0f0; /* Light grey background */
+    /*border-radius: 8px;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+  }
+  
 </style>
 </head>
 <body>
@@ -104,6 +115,11 @@
   <div style="text-align: center;">
     <input type="text" id="searchBar" placeholder="Search..." class="search-bar">
     <button onclick="toggleFilter()" id="filterButton" class="search-btn">Filter by Skills to Learn</button>
+  </div>
+  
+  <!-- Welcoming message -->
+  <div class="welcome-message">
+    <p>Dive into our tailored course recommendations, perfectly matched to your interest! Let's unlock your potential together.</p>
   </div>
 
   <div class="courses-listing">
@@ -132,91 +148,74 @@
       <p>Course Description...</p>
       <button class="view-btn">View</button>
     </div>
+    
+    <div class="courses-listing">
+      <!-- Course cards will be dynamically inserted here -->
+    </div>
+
+
   </div>
   <script>
-    var courses = null;
-    let filterActive = false;
+    // Keep one single source of all courses fetched from the CSV file
+    var allCourses = [];
+
     function loadCourses() {
       fetch('courses.csv')
         .then(response => response.text())
         .then(text => {
-          courses = parseCSV(text);
-          displayCourses(courses);
+          allCourses = parseCSV(text); // Parse the CSV and store it in the allCourses variable
+          const selectedSkills = JSON.parse(localStorage.getItem('selectedItems2')) || [];
+          // Display initially filtered courses or all courses if no skills are selected
+          displayCourses(selectedSkills.length ? filterCoursesBySkills(allCourses, selectedSkills) : allCourses);
+        })
+        .catch(error => {
+          console.error('Error loading courses:', error);
+          // Handle the error properly
         });
     }
 
     function parseCSV(text) {
-      const lines = text.split('\n');
-      return lines.map(line => {
+      // Split the CSV text by new lines and then by the delimiter
+      return text.trim().split('\n').map(line => {
         const [title, description] = line.split('^');
-        return {title, description};
+        return { title, description };
+      });
+    }
+
+    function filterCoursesBySkills(courses, selectedSkills) {
+      return courses.filter(course => {
+        return selectedSkills.some(skill => course.description.toLowerCase().includes(skill.toLowerCase()));
       });
     }
 
     function displayCourses(courses) {
       const container = document.querySelector('.courses-listing');
-      container.innerHTML = '';
+      container.innerHTML = ''; // Clear previous contents
       courses.forEach(course => {
-        const courseElement = document.createElement('div');
-        courseElement.className = 'course-card';
-        courseElement.innerHTML = 
-          `<h2>${course.title}</h2>
+        const courseCard = document.createElement('div');
+        courseCard.className = 'course-card';
+        courseCard.innerHTML = `
+          <h2>${course.title}</h2>
           <p>${course.description}</p>
-          <a href="https://www.google.com" target="_blank" class="view-btn" style="text-decoration: none;">View</a>`;
-        container.appendChild(courseElement);
+          <button class="view-btn">View</button> <!-- You can make this button functional as needed -->
+        `;
+        container.appendChild(courseCard);
       });
-    }
-
-    function adjustTextareaHeight(textarea) {
-      textarea.style.height = 'auto'; 
-      textarea.style.height = `${textarea.scrollHeight}px`;
-    }
-
-    function closePopup() {
-      document.querySelector('.popup-background').style.display = 'none';
-      document.getElementById('email-body').value = "";
-    }
-
-
-    function toggleFilter() {
-      filterActive = !filterActive;
-      if (filterActive) {
-        document.getElementById('filterButton').textContent = 'Show All Courses';
-        localStorage.setItem('filterClicked', 'true');
-        filterCourses();
-      } else {
-        document.getElementById('filterButton').textContent = 'Filter by Skills';
-        localStorage.removeItem('filterClicked');
-        loadCourses();
-      }
-    }
-
-    function filterCourses() {
-      const selectedSkills = localStorage.getItem('selectedItems2');
-      const filteredCourses = courses.filter(course => {
-        const courseSkillsArray = course.skills.split(',').map(skill => skill.trim());
-        return courseSkillsArray.some(skill => selectedSkills.includes(skill));
-      });
-      displayCourses(filteredCourses);
     }
 
     function searchCourses() {
       const searchTerm = document.getElementById('searchBar').value.toLowerCase();
-      if (searchTerm === "") {
-        displayCourses(courses);
-        return;
-      }
-      const searchedCourses = courses.filter(course => {
-        return (
-          course.title.toLowerCase().includes(searchTerm) ||
-          course.description.toLowerCase().includes(searchTerm)
-        );
-      });
-      displayCourses(searchedCourses);
+      const searchedCourses = searchTerm
+        ? allCourses.filter(course => course.title.toLowerCase().includes(searchTerm) || course.description.toLowerCase().includes(searchTerm))
+        : allCourses; // If the search term is empty, return all courses
+      displayCourses(searchedCourses); // Update the display with the search results
     }
 
+    // Event listener for the search bar
     document.getElementById('searchBar').addEventListener('input', searchCourses);
-    window.addEventListener('DOMContentLoaded', loadCourses);
+
+    // Load courses when the DOM content has loaded
+    document.addEventListener('DOMContentLoaded', loadCourses);
   </script>
 </body>
 </html>
