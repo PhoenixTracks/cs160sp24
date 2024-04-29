@@ -117,23 +117,31 @@ async function setDedication() {
 }
 
 async function postData(selectedItems1, skillTimeFrames, dedicationHours, maxSkillDuration) {
-  const response = await fetch(
-  'https://noggin.rea.gent/silly-panda-1609',
-  {
+  // Function to format skills into a readable string
+  function formatSkillsReadable(skillTimeFrames) {
+    return skillTimeFrames.map((item, index) => {
+      return `${index + 1}. Skill: ${item.skill}, Timeframe: ${item.timeframe}`;
+    }).join('\n');
+  }
+
+  // Create a readable version of skillTimeFrames
+  const readableSkills = formatSkillsReadable(skillTimeFrames);
+
+  const response = await fetch('https://noggin.rea.gent/dusty-cougar-8520', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer rg_v1_bjk45mhn9v5l3l8zjqid50g3nztsce5ac0yq_ngk',
+      Authorization: 'Bearer rg_v1_5jgy6smbvfqh3rswwh1a9bdalypw7rq7ebf7_ngk',
     },
     body: JSON.stringify({
-      // fill variables here.
       "skills": selectedItems1,
-      "desiredskills": skillTimeFrames,
+      "desiredskills": readableSkills,
       "hours": dedicationHours,
       "months": maxSkillDuration,
     }),
-  }
-).then(response => response.text());
+  }).then(response => response.text());
+
+  return response;
 }
 
 function buildTimeline() {
