@@ -115,14 +115,19 @@ async function setDedication() {
 }
 
 async function postData(selectedItems1, skillTimeFrames, dedicationHours, maxSkillDuration) {
-  // Function to format skills into a readable string
+  // Function to format skills into a readable string, working directly with an object
   function formatSkillsReadable(skillTimeFrames) {
-    return skillTimeFrames.map((item, index) => {
-      return `${index + 1}. Skill: ${item.skill}, Timeframe: ${item.timeframe}`;
-    }).join('\n');
+    let readableString = "";
+    let index = 0; // To keep track of numbering in the output string
+    for (let skill in skillTimeFrames) {
+      if (skillTimeFrames.hasOwnProperty(skill)) { // Check if the key is actually a property of the object
+        index++;
+        readableString += `${index}. Skill: ${skill}, Timeframe: ${skillTimeFrames[skill]}\n`;
+      }
+    }
+    return readableString;
   }
 
-  // Create a readable version of skillTimeFrames
   const readableSkills = formatSkillsReadable(skillTimeFrames);
 
   const response = await fetch('https://noggin.rea.gent/dusty-cougar-8520', {
