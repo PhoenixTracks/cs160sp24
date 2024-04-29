@@ -105,41 +105,40 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 let dedicationHours = 0; // Default value
+let selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || [];
+let skillTimeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
+let maxSkillDuration = Math.max(0, ...Object.values(skillTimeFrames));
 
 async function setDedication() {
     const hours = document.getElementById('dedicationHours').value;
     dedicationHours = parseInt(hours, 10);
-    await postData(); 
-    buildTimeline(); 
+    await postData(selectedItems1, skillTimeFrames, dedicationHours, maxSkillDuration);
+    buildTimeline();
 }
 
-async function postData() {
-  const response = await fetch('https://noggin.rea.gent/silly-panda-1609', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Bearer rg_v1_bjk45mhn9v5l3l8zjqid50g3nztsce5ac0yq_ngk',
-            },
-            body: JSON.stringify({
-                skills: JSON.stringify(selectedItems1),
-                desiredskills: JSON.stringify(skillTimeFrames),
-                hours: dedicationHours,
-                months: maxSkillDuration,
-            })
-        });
-        const data = await response.text();
-        console.log('Data received:', data);
+async function postData(selectedItems1, skillTimeFrames, dedicationHours, maxSkillDuration) {
+  const response = await fetch(
+  'https://noggin.rea.gent/silly-panda-1609',
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer rg_v1_bjk45mhn9v5l3l8zjqid50g3nztsce5ac0yq_ngk',
+    },
+    body: JSON.stringify({
+      // fill variables here.
+      "skills": selectedItems1,
+      "desiredskills": skillTimeFrames,
+      "hours": dedicationHours,
+      "months": maxSkillDuration,
+    }),
+  }
+).then(response => response.text());
 }
 
 function buildTimeline() {
     const timelineList = document.getElementById("timelineList");
     timelineList.innerHTML = "";
-    
-    const selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || [];
-    const skillTimeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
-    
-    let maxSkillDuration = Math.max(0, ...Object.values(skillTimeFrames));
-
     for (let month = 1; month <= maxSkillDuration; month++) {
         const monthContainer = document.createElement('div');
         monthContainer.className = 'month-container';
@@ -193,4 +192,3 @@ function buildTimeline() {
 </script>
 </body>
 </html>
-
