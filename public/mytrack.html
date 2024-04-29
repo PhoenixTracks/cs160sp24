@@ -88,6 +88,8 @@
 <div id="timelineDisplay">
   <h2>Career Track Timeline</h2>
   <div id="timelineList" class="timeline-row"></div>
+  <button class="plan-button" onclick="setDedication()">Generate a More Detailed Plan</button>
+  <div id="timelineList" class="timeline-row"></div>
 </div>
 
 <script>
@@ -95,10 +97,11 @@ document.addEventListener("DOMContentLoaded", function() {
     buildTimeline();
 });
 
-let dailyHours = localStorage.getItem('dailyHours') || 0; 
+let dailyHours = parseInt(localStorage.getItem('dailyHours')) || 0; 
 let selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || [];
 let skillTimeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
 let maxSkillDuration = Math.max(0, ...Object.values(skillTimeFrames));
+
 
 async function setDedication() {
     await postData(selectedItems1, skillTimeFrames, dailyHours, maxSkillDuration);
@@ -191,6 +194,7 @@ function buildTimeline() {
         timelineList.appendChild(monthContainer);
     }
 }
+
 </script>
 </body>
 </html>
