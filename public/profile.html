@@ -1,61 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profile</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-  }
-  .active-nav {
-    font-weight: bold;
-  }
-  .settings-header {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+
+  <link
+  href="https://fonts.googleapis.com/css?family=Fira+Sans"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/vendor/bootstrap/css/bootstrap.css"
+/>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="/css/main.css" /> -->
+<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .active-nav {
+      font-weight: bold;
+    }
+    .settings-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-  }
-  .settings-nav {
-    list-style-type: none;
-  }
-  .settings-nav li {
-    display: inline;
-    margin-right: 20px;
-  }
-  .settings-nav {
-    list-style-type: none;
-    padding: 0;
-  }
-  .settings-nav a {
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-    background-color: #e7e7e7; /* Button color */
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
-  }
-  .settings-nav a:hover {
-    background-color: #ddd; /* Hover effect color change */
-  }
-  .settings-welcome {
-    text-align: center;
-  }
-  .skills-section, .applications-section, .courses-section {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-</style>
+    }
+    .settings-nav {
+      list-style-type: none;
+    }
+    .settings-nav li {
+      display: inline;
+      margin-right: 20px;
+    }
+    .settings-nav {
+      list-style-type: none;
+      padding: 0;
+    }
+    .settings-nav a {
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      background-color: #e7e7e7; 
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      display: inline-block;
+      margin-right: 10px;
+      border-radius: 5px; 
+      transition: background-color 0.3s; 
+    }
+    .settings-nav a:hover {
+      background-color: #ddd; 
+    }
+    .settings-welcome {
+      text-align: center;
+    }
+    .quiz-section {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .profile-info {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .quiz-section h1, .quiz-section h4, .quiz-section h6 {
+      margin-top: 0;
+    }
+    .quiz-question {
+      margin-bottom: 10px;
+    }
+    .quiz-input {
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      width: 50%;
+      font-size: 14px;
+    }
+    .quiz-button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .quiz-button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
 
@@ -69,5 +120,74 @@
     <li><a href="profile.html" class="active-nav">Profile</a></li>
   </ul>
 </div>
-</body>
 
+<div class="profile-info">
+  <h2>Profile Information</h2>
+  <p><strong>Skills I have:</strong></p>
+  <ul id="skillsHaveList"></ul>
+  <p><strong>Skills I want to learn:</strong></p>
+  <ul id="skillsLearnList"></ul>
+  <p><strong>Time frames for new skills:</strong></p>
+  <ul id="timeFramesList"></ul>
+</div>
+<div class="quiz-section">
+  <h1>Update Profile</h1>
+  <div class="quiz-question">
+    <h4>Question 1</h4>
+    <h6>What skills do you have?</h6>
+    <input type="text" id="searchBox1" class="quiz-input" placeholder="Search...">
+             <div id="results1"></div>
+  </div>
+  <div class="quiz-question">
+    <h4>Question 2</h4>
+    <h6>What skills would you like to learn?</h6>
+    <input type="text" id="searchBox2" class="quiz-input" placeholder="Search..." onchange="addTimeFrame(this.value)">
+          <div id="results2"></div>
+  </div>
+  <div class="quiz-question">
+    <h4>Question 3</h4>
+    <div id="timeFrames"></div>
+  </div>
+  <div class="quiz-question">
+    <h4>Question 4</h4>
+    <h6>Full Name</h6>
+    <input type="text" id="nameBox" placeholder="Jane Doe" class="quiz-input">
+             <div id="name"></div>
+  </div>
+  <button id="submit" class="quiz-button">Submit Quiz</button>
+</div>
+
+<script src="script.js"></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var skillsHave = JSON.parse(localStorage.getItem('selectedItems1')) || [];
+    var skillsLearn = JSON.parse(localStorage.getItem('selectedItems2')) || [];
+    var timeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
+
+    var skillsHaveList = document.getElementById('skillsHaveList');
+    var skillsLearnList = document.getElementById('skillsLearnList');
+    var timeFramesList = document.getElementById('timeFramesList');
+
+    skillsHave.forEach(function(skill) {
+      var li = document.createElement('li');
+      li.textContent = skill;
+      skillsHaveList.appendChild(li);
+    });
+
+    skillsLearn.forEach(function(skill) {
+      var li = document.createElement('li');
+      li.textContent = skill;
+      skillsLearnList.appendChild(li);
+    });
+
+    Object.keys(timeFrames).forEach(function(skill) {
+      var li = document.createElement('li');
+      li.textContent = skill + ': ' + timeFrames[skill] + ' month(s)';
+      timeFramesList.appendChild(li);
+    });
+  });
+</script>
+</body>
+</html>

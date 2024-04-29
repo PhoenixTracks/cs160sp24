@@ -108,7 +108,7 @@ function addTimeFrame() {
 var skillTimeFrames = {};
 document.getElementById("submit").addEventListener("click", function() {
 
-
+  
   for (var i = 0; i < selectedItems2.length; i++) {
     var skill = selectedItems2[i];
     var select = document.getElementById('select_' + i); // Select by id
@@ -118,16 +118,20 @@ document.getElementById("submit").addEventListener("click", function() {
     skillTimeFrames[skill] = timeFrame;
   }
 
-  localStorage.clear();
+  localStorage.removeItem('name');
+  localStorage.removeItem('selectedItems1');
+  localStorage.removeItem('selectedItems2');
+  localStorage.removeItem('skillTimeFrames');
   saveToLocalStorage();
   window.location.href = 'dashboard.html';
 });
 
 
 function saveToLocalStorage() {
+  var name = document.getElementById('nameBox').value.trim();
+  localStorage.setItem('name', name);
   localStorage.setItem('selectedItems1', JSON.stringify(selectedItems1)); // existing skills
   localStorage.setItem('selectedItems2', JSON.stringify(selectedItems2));
   localStorage.setItem('skillTimeFrames', JSON.stringify(skillTimeFrames)); // dictionary -> key: skill, value: # of months
   localStorage.setItem("existUser", 1);
 }
-
