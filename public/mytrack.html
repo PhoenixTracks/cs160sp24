@@ -204,33 +204,6 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-
-
 </style>
 </head>
 <body>
@@ -263,11 +236,8 @@
     </div>
   </div>
 
-
 </div>
 </div>
-
-
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -423,7 +393,7 @@ function appendDetailedPlan(monthsData) {
             console.error("Month container not found for month: ", monthNumber);
             return;
         }
-
+ 
         // this clears the existing details list if it is present -> resets + creates new one
         const existingDetailsList = monthContainer.getElementsByClassName('detailed-plan-list');
         while (existingDetailsList.length > 0) {
@@ -472,16 +442,7 @@ function undoDetailedPlan(){
 function showLoad(display) {
   document.getElementById('loadingIndicator').style.display = display ? 'flex' : 'none';
 }
-// Get the modal
-var modal = document.getElementById("loadingModal");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
 
 </script>
 </body>
