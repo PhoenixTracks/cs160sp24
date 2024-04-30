@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jobs</title>
+<link rel="icon" type="image/x-icon" href="/images/icon.ico">
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -284,6 +285,7 @@ textarea {
       currentJobEmail = job.email;
       currentJobTitle = job.title;
       location.href = `mailto:${job.email}?subject=Interested in ${job.title} Job`;
+      console.log('Applying directly to job:', job.title);
       saveJob({ job, time: new Date().toISOString() });
     }
 
@@ -390,14 +392,26 @@ textarea {
     document.getElementById('searchBar').addEventListener('input', searchJobs);
     window.addEventListener('DOMContentLoaded', loadJobs);
 
-    function saveJob(job, time) {
+    function saveJob(currJob, time) {
       var jobApplications = JSON.parse(localStorage.getItem('jobApplications')) || [];
-      var existingJob = jobApplications.find(app => app.job.title === job.title && app.job.company === job.company && app.job.email === job.email);
+      var existingJob = false;
+
+      console.log(jobApplications.currJob);
+
+      jobApplications.forEach(application => {
+        console.log(application.job.job.title);
+          if (application.job.title === currJob.job.title) {
+            existingJob = true;
+            console.log(application.job.job.title);
+          }
+      });
+
       if (existingJob) {
       console.log("Job already exists");
+      console.log(existingJob);
       return;
       }
-      jobApplications.push({job, time});
+      jobApplications.push({currJob, time});
       localStorage.setItem('jobApplications', JSON.stringify(jobApplications));
     }
 
