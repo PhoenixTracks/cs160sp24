@@ -123,21 +123,25 @@ async function postData(selectedItems1, skillTimeFrames, dailyHours, maxSkillDur
   }
 
   const readableSkills = formatSkillsReadable(skillTimeFrames);
+  // import fetch from 'node-fetch'; // for node.js
 
-  const response = await fetch('https://noggin.rea.gent/dusty-cougar-8520', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer rg_v1_5jgy6smbvfqh3rswwh1a9bdalypw7rq7ebf7_ngk',
-    },
-    body: JSON.stringify({
-      "skills": selectedItems1,
-      "desiredskills": readableSkills,
-      "hours": dailyHours,
-      "months": maxSkillDuration,
-    }),
-  }).then(response => response.text());
-
+  const response = await fetch(
+    'https://noggin.rea.gent/criminal-rooster-5479',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer rg_v1_bpuldd2dy138fzuj519iszhurqp93zuhrl1h_ngk',
+      },
+      body: JSON.stringify({
+        // fill variables here.
+        "skills": selectedItems1,
+        "desiredskills": readableSkills,
+        "hours": dailyHours,
+        "months": maxSkillDuration,
+      }),
+    }
+  ).then(response => response.text());
   return response;
 }
 
