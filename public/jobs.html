@@ -10,6 +10,10 @@
     font-family: Arial, sans-serif;
     
   }
+  .logo-and-title {
+  display: flex;
+  align-items: center; 
+}
   .active-nav {
     font-weight: bold;
   }
@@ -181,7 +185,10 @@ textarea {
   </div>
   
   <div class="jobs-header">
-    <h1>Jobs</h1>
+    <div class="logo-and-title">
+      <img src="/images/logo.png" alt="Company Logo" style="height: 100px;">
+      <h1>Jobs</h1>
+    </div>
     <ul class="jobs-nav">
       <li><a href="dashboard.html">Dashboard</a></li>
       <li><a href="jobs.html" class="active-nav">Jobs</a></li>

@@ -6,17 +6,17 @@
 <title>Dashboard</title>
 <link rel="icon" type="image/x-icon" href="/images/icon.ico">
 <style>
-  :root {
-  --background-color: #FFFFFF; /* Soft peach, creating a warm and inviting background */
-  --font-color:   #0A174C; /* Medium dark gray for legibility that isn't too harsh */
-  --header-bg-color: #FFFFFF; /* Very light peach, almost white, for header backgrounds */
-  --nav-bg-color:   #D63964; /* Light creamy peach for navigation, offering a gentle visual appeal */
-  --nav-font-color: #DAA49A; /* Dusty rose for navigation text, adding a touch of uniqueness */
-  --section-border-color: #E2C2B9; /* Soft blush for borders, elegant and subtle */
-  --section-bg-color: #FFFFFF; /* Pure white for section backgrounds, clean and classic */
-  --profile-border-color: #E2C2B9; /* Matching the section border for harmony and consistency */
-  --icon-bg-color: #C97B63; /* Warm terracotta for icons, vibrant and expressive */
-  --hover-bg-color: #DAA49A; /* Dusty rose for hover states, complements navigation text */
+:root {
+  --background-color: #FFF;
+  --font-color: #333;
+  --header-bg-color: #F8F9FA;
+  --nav-bg-color: #E9ECEF;
+  --nav-font-color: #333;
+  --section-border-color: #CCC;
+  --section-bg-color: #FFF;
+  --profile-border-color: #CCC;
+  --icon-bg-color: #EEE;
+  --hover-bg-color: #DDD;
 }
 
 [data-theme="dark"] {
@@ -32,148 +32,88 @@
   --hover-bg-color: #1ABC9C;
 }
 
-  body {
-    font-family: Arial, sans-serif;
-    background-color: var(--background-color);
-    color: var(--font-color);
-  }
-  .active-nav {
-    font-weight: bold;
-  }
-  .logo-and-title {
-  display: flex;
-  align-items: center; 
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--font-color);
 }
-
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 20px;
   background-color: var(--header-bg-color);
   color: var(--font-color);
 }
-  .dashboard-nav {
-    list-style-type: none;
-  }
-  .dashboard-nav li {
-    display: inline;
-    margin-right: 20px;
-  }
-  .dashboard-nav {
-    list-style-type: none;
-    padding: 0;
-  }
-  .dashboard-nav a {
-    justify-content: space-between;
-    display: flex;
-    
-    align-items: center;
-    text-decoration: none;
-    color: var(--nav-font-color);
-  background-color: var(--nav-bg-color);
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 5px; 
-    transition: background-color 0.3s; 
-  }
-  .dashboard-nav a:hover {
-    background-color: var(--hover-bg-color);
-  }
-  .dashboard-welcome {
-    display: flex;
-    align-items: center; /* Vertically center the content */
-    justify-content:  center; /* Horizontally center the content */
-    height: 100px; /* Adjust height as needed */
-   
+.dashboard-nav {
+  list-style-type: none;
+  padding: 0;
 }
-
-    
-
-  .skills-section, .applications-section, .courses-section {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid var(--section-border-color);
-    border-radius: 5px;
-    background-color: var(--section-bg-color);
-  }
-  .dashboard-content {
-    display: flex; 
-    flex-direction: row; 
-    justify-content: flex-start;
-    align-items: flex-start; 
-    gap: 20px; 
-    flex-wrap: wrap;
-  }
-  
-  .skills-section, .applications-section, .courses-section {
-    flex-basis: calc(30% - 20px); 
-    /* flex-basis: calc((100% - 40px) / 3); */
-    box-sizing: border-box; 
-  }
-  .profile-pic-container {
-        position: relative;
-        display: inline-block;
-        text-align: center;
-        color: white;
-  }
-  .profile-pic {
-      border-radius: 50%;
-      width: 200px;
-      height: 200px;
-      margin-left: 15%;
-      
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      display: inline-block;
-      overflow: hidden;
-      border: 3px solid var(--profile-border-color);
-      background-color: var(--icon-bg-color);
-  }
-  .profile-pic:hover .camera-icon {
-      display: block;
-  }
-  .camera-icon {
-  position: absolute;
-  width: 40px; 
-  height: 40px; 
-  bottom: -20px; 
-  left: calc(50% - 20px); 
-  background: var(--icon-bg-color); 
-  border-radius: 50%;
+.dashboard-nav li {
+  display: inline;
+  margin-right: 20px;
+}
+.dashboard-nav a {
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 3; 
-  }
-
-  .profile-pic input[type='file'] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: pointer;
-  }
-  .profile-info {
-      margin-top: 8px;
-  }
-
+  text-decoration: none;
+  color: var(--nav-font-color);
+  background-color: var(--nav-bg-color);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.dashboard-nav a:hover {
+  background-color: var(--hover-bg-color);
+}
+.skills-section, .applications-section, .courses-section {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid var(--section-border-color);
+  border-radius: 5px;
+  background-color: var(--section-bg-color);
+}
+.profile-pic-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  color: white;
+}
+.profile-pic {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-left: 15%;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    overflow: hidden;
+    border: 3px solid var(--profile-border-color);
+    background-color: var(--icon-bg-color);
+}
+.camera-icon {
+    position: absolute;
+    width: 40px; 
+    height: 40px; 
+    bottom: -20px; 
+    left: calc(50% - 20px); 
+    background: var(--icon-bg-color); 
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
 </style>
 </head>
 <body>
 
 <div class="dashboard-header">
-
-  <div class="logo-and-title">
-    <img src="/images/logo.png" alt="Company Logo" style="height: 100px;">
-    <h1>Dashboard</h1>
-  </div>
+  <h1>Dashboard</h1>
   <ul class="dashboard-nav">
     <li><a href="dashboard.html" class="active-nav">Dashboard</a></li>
     <li><a href="jobs.html">Jobs</a></li>
@@ -188,18 +128,12 @@
   <h2 id="welcomeMessage">Welcome back, [username]</h2>
 </div>
 
-
 <div class="profile-pic-container">
-  
   <div class="profile-pic" style="background-image: url('images/profile.svg');">
-      
-      <div class="camera-icon glyphicon glyphicon-camera">📷</div>
-      
-      <input type="File" name="fileToUpload" id="fileToUpload">
+    <div class="camera-icon">📷</div>
+    <input type="File" name="fileToUpload" id="fileToUpload">
   </div>
- 
 </div>
-
 
 <div class="dashboard-content">
   <div class="skills-section">
@@ -213,7 +147,7 @@
   </div>
 
   <div class="applications-section">
-    <h3> Job Application Status</h3>
+    <h3>Job Application Status</h3>
     <ul id="jobsList"></ul>
   </div>
 
@@ -221,10 +155,6 @@
     <h3>Continue Your Courses</h3>
   </div>
 </div>
-
-</body>
-</html>
-
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -263,10 +193,9 @@
       // Display job applications
       jobApplications.forEach(application => {
           const jobElement = document.createElement('li');
-          jobElement.textContent = `${application.job.job.title} at ${application.job.job.company} - ${application.job.time}`;
+          jobElement.textContent = `${application.job.title} at ${application.job.company} - ${application.time}`;
           jobsContainer.appendChild(jobElement);
       });
-
   }
   
   // Load the profile picture from localStorage
@@ -289,6 +218,15 @@
           reader.readAsDataURL(file);
       }
   });
+
+  // Function to dynamically update the welcome message with the user's name
+  var welcomeMessage = document.getElementById('welcomeMessage');
+  var storedName = localStorage.getItem('name');
+  if (storedName) {
+    welcomeMessage.textContent = "Welcome back, " + storedName;
+  } else {
+    welcomeMessage.textContent = "Welcome back, [username]";
+  }
   // Initialize or load from localStorage
   if(localStorage.getItem('theme') === 'dark') {
     document.body.setAttribute('data-theme', 'dark');
@@ -300,9 +238,8 @@
     document.body.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme); // Save the theme preference
   }
+</script>
+</script>
 
-  var welcomeMessage = document.getElementById('welcomeMessage');
-  var storedName = localStorage.getItem('name');
-  welcomeMessage.textContent = "Welcome back, " + storedName;
-  </script>
-  
+</body>
+</html>
