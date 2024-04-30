@@ -11,11 +11,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <style>
+  :root {
+  --background-color: #FFFFFF; /* Soft peach, creating a warm and inviting background */
+  --font-color:   #0A174C; /* Medium dark gray for legibility that isn't too harsh */
+  --header-bg-color: #FFFFFF; /* Very light peach, almost white, for header backgrounds */
+  --nav-bg-color:   #D63964; /* Light creamy peach for navigation, offering a gentle visual appeal */
+  --nav-font-color: #fff; /* Dusty rose for navigation text, adding a touch of uniqueness */
+  --section-border-color: #E2C2B9; /* Soft blush for borders, elegant and subtle */
+  --month-bg-color: #C97B63; /* Pure white for section backgrounds, clean and classic */
+  --profile-border-color: #E2C2B9; /* Matching the section border for harmony and consistency */
+  --plan-bg-color: #25682c; 
+  --plan-hover-color: #0f2911; 
+  --undo-bg-color: #b4261c;
+  --undo-hover-color: #7a1c15;
+  --hover-bg-color: #DAA49A; /* Dusty rose for hover states, complements navigation text */
+}
 
-  body {
+[data-theme="dark"] {
+  --background-color: #2C3E50;
+  --font-color: #ECF0F1;
+  --header-bg-color: #34495E;
+  --nav-bg-color: #16A085;
+  --nav-font-color: #ECF0F1;
+  --section-border-color: #7F8C8D;
+  --month-bg-color: #34495E;
+  --profile-border-color: #BDC3C7;
+  --plan-bg-color: #BDC3C7;
+  --plan-hover-color: #1ABC9C;
+  --undo-bg-color: #4f4949;
+  --undo-hover-color: #cf3c3c;
+}
+  body, h1, h2, h3, p {
     font-family: "Poppins";
-    background-color: #F5F3EE;
+    background-color: var(--background-color);
+    color: var(--font-color);
   }
+
   .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
@@ -137,25 +168,22 @@
   }
   .mytrack-nav {
     list-style-type: none;
-    padding: 0;
+    margin-right: 20px;
   }
   .mytrack-nav li {
     display: inline;
     margin-right: 20px;
   }
   .mytrack-nav a {
-    display: inline-block;
-    text-decoration:none;
-    color: #FFF;
-    background-color: #E1895D;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    color: var(--nav-font-color); 
+    background-color: var(--nav-bg-color);
+    text-decoration: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
   }
   .mytrack-nav a:hover {
-    background-color: #ae6541;
+    background-color: var(--hover-bg-color);
   }
   .logo-and-title {
   display: flex;
@@ -171,9 +199,8 @@
     max-width: 1500px;
     padding: 10px;
     box-sizing: border-box;
-    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
-    border: 1px solid #ddd;
-    background-color: #E7CC65;
+    border: 10px solid var(--profile-border-color);
+    background-color: var(--month-bg-color);
     margin-right: 1.5%;  /* horizontal space between containers */
     margin-bottom: 20px;  /* vertical space between containers */
     border-radius: 15px;
@@ -214,26 +241,26 @@
   gap: 10px; /* Spacing between buttons */
   }
 
-  .plan-button, #undoButton {
+  button, .plan-button, #undoButton {
+    font-family: "Poppins";
     padding: 10px 20px;
     font-size: 20px;
     color: white;
-    background-color: #1B383A; /* Green background for visibility */
-    border: none;
+    background-color: var(--plan-bg-color); 
     border-radius: 5px;
     cursor: pointer;
   }
 
   .plan-button:hover, #undoButton:hover {
-    background-color: #122527; /* Slightly darker green on hover */
+    background-color: var(--plan-hover-color); 
   }
 
   #undoButton {
-    background-color: #b4261c; /* Red background for the undo button */
+    background-color: var(--undo-bg-color);
   }
 
   #undoButton:hover {
-    background-color: #7a1c15; /* Slightly darker red on hover */
+    background-color: var(--undo-hover-color); 
   }
   .modal {
     display: none; 
@@ -299,6 +326,7 @@
     <li><a href="courses.html">Courses</a></li>
     <li><a href="mytrack.html" class="active-nav">MyTrack</a></li>
     <li><a href="profile.html">Profile</a></li>
+    <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
   </ul>
 </div>
 <div id="timelineDisplay"> 
@@ -337,6 +365,19 @@ function loadDetailedPlans() {
     }
 }
 
+function setInitialTheme() {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.body.setAttribute('data-theme', savedTheme);
+}
+
+function toggleDarkMode() {
+  const currentTheme = document.body.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.body.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+}
+
+document.addEventListener("DOMContentLoaded", setInitialTheme);
 let dailyHours = parseInt(localStorage.getItem('dailyHours')) || 0; 
 let selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || [];
 let skillTimeFrames = JSON.parse(localStorage.getItem('skillTimeFrames')) || {};
@@ -528,6 +569,14 @@ function showLoad(display) {
   const modal = document.getElementById('myModal');
   modal.style.display = display ? 'block' : 'none';
 }
+
+// enables dark mode
+function toggleDarkMode() {
+    var currentTheme = document.body.getAttribute('data-theme');
+    var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme); // Save the theme preference
+  }
 </script>
 </body>
 </html>
