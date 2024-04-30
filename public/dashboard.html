@@ -163,6 +163,44 @@
   .profile-info {
       margin-top: 8px;
   }
+  .progress-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+.update-btn {
+    padding: 8px 16px;
+    background-color: var(--icon-bg-color); /* Using the terracotta color defined earlier */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.update-btn:hover, .update-btn:focus {
+    background-color: var(--hover-bg-color); /* Using the dusty rose color for hover state */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.update-btn:active {
+    background-color: #B54A30; /* Darker shade for active state */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) inset;
+}
 
 </style>
 </head>
@@ -219,6 +257,7 @@
 
   <div class="courses-section">
     <h3>Continue Your Courses</h3>
+    <div id="enrolledCoursesContainer"></div>
   </div>
 </div>
 
@@ -304,5 +343,72 @@
   var welcomeMessage = document.getElementById('welcomeMessage');
   var storedName = localStorage.getItem('name');
   welcomeMessage.textContent = "Welcome back, " + storedName;
+
+  
+  document.addEventListener('DOMContentLoaded', function() {
+  // Retrieve the array of enrolled courses from local storage
+  const enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || [];
+
+  // Target the container where courses will be displayed
+  const coursesContainer = document.getElementById('enrolledCoursesContainer'); // Ensure this element exists in your HTML
+
+  // Clear previous contents
+  coursesContainer.innerHTML = '';
+
+  // Add each course to the dashboard
+  enrolledCourses.forEach(course => {
+    const courseElement = document.createElement('div');
+    courseElement.textContent = `Enrolled in: ${course}`;
+    coursesContainer.appendChild(courseElement);
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  // Load or initialize course progress
+  loadCourseProgress();
+});
+
+function loadCourseProgress() {
+  const enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || [];
+  const coursesContainer = document.getElementById('enrolledCoursesContainer');
+  coursesContainer.innerHTML = ''; // Clear previous contents
+
+  enrolledCourses.forEach(course => {
+    const courseElement = document.createElement('div');
+    courseElement.textContent = `Enrolled in: ${course}`;
+    
+    const progressContainer = document.createElement('div');
+    progressContainer.className = 'progress-container';
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    progressBar.style.width = `${getCourseProgress(course)}%`; // Set width to course progress
+    progressBar.textContent = `${getCourseProgress(course)}%`;
+    
+    const updateButton = document.createElement('button');
+    updateButton.textContent = 'Update Progress';
+    updateButton.className = 'update-btn'; // Apply styled class
+    updateButton.onclick = function() { updateCourseProgress(course); };
+
+    progressContainer.appendChild(progressBar);
+    courseElement.appendChild(progressContainer);
+    courseElement.appendChild(updateButton);
+    coursesContainer.appendChild(courseElement);
+  });
+}
+
+// Function to retrieve course progress, defaulting to 10% for demonstration
+function getCourseProgress(course) {
+  const progressData = JSON.parse(localStorage.getItem('courseProgress')) || {};
+  return progressData[course] || 10; // Default to 10% if no data exists
+}
+
+function updateCourseProgress(course) {
+  const progressData = JSON.parse(localStorage.getItem('courseProgress')) || {};
+  // Generate a random progress value between 1 and 100% (if you want it to be incremental, you need additional logic)
+  const randomProgress = Math.floor(Math.random() * 100) + 1; // Random progress between 1% and 100%
+  progressData[course] = randomProgress;
+  localStorage.setItem('courseProgress', JSON.stringify(progressData));
+  loadCourseProgress(); // Refresh the progress bars
+}
   </script>
   

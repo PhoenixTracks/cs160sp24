@@ -144,27 +144,27 @@
     <div class="course-card">
       <h2>Course Title</h2>
       <p>Course Description...</p>
-      <button class="view-btn">View</button>
+      <button class="view-btn">Take</button>
     </div>
     <div class="course-card">
       <h2>Course Title</h2>
       <p>Course Description...</p>
-      <button class="view-btn">View</button>
+      <button class="view-btn">Take</button>
     </div>
     <div class="course-card">
       <h2>Course Title</h2>
       <p>Course Description...</p>
-      <button class="view-btn">View</button>
+      <button class="view-btn">Take</button>
     </div>
     <div class="course-card">
       <h2>Course Title</h2>
       <p>Course Description...</p>
-      <button class="view-btn">View</button>
+      <button class="view-btn">Take</button>
     </div>
     <div class="course-card">
       <h2>Course Title</h2>
       <p>Course Description...</p>
-      <button class="view-btn">View</button>
+      <button class="view-btn">Take</button>
     </div>
     
     <div class="courses-listing">
@@ -202,19 +202,19 @@
     }
 
     function displayCourses(courses) {
-      const container = document.querySelector('.courses-listing');
-      container.innerHTML = ''; 
-      courses.forEach(course => {
-        const courseCard = document.createElement('div');
-        courseCard.className = 'course-card';
-        courseCard.innerHTML = `
-          <h2>${course.title}</h2>
-          <p>${course.description}</p>
-          <button class="view-btn">View</button> <!-- You can make this button functional as needed -->
-        `;
-        container.appendChild(courseCard);
-      });
-    }
+  const container = document.querySelector('.courses-listing');
+  container.innerHTML = ''; 
+  courses.forEach(course => {
+    const courseCard = document.createElement('div');
+    courseCard.className = 'course-card';
+    courseCard.innerHTML = `
+      <h2>${course.title}</h2>
+      <p>${course.description}</p>
+      <button class="view-btn" onclick="takeCourse('${course.title}')">Take</button>
+    `;
+    container.appendChild(courseCard);
+  });
+}
 
     function searchCourses() {
       const searchTerm = document.getElementById('searchBar').value.toLowerCase();
@@ -227,6 +227,30 @@
     document.getElementById('searchBar').addEventListener('input', searchCourses);
 
     document.addEventListener('DOMContentLoaded', loadCourses);
+    
+    function takeCourse(courseTitle) {
+  
+  const confirmEnroll = confirm(`You are about to enroll yourself in the course: ${courseTitle}. Would you like to proceed?`);
+  
+  if (confirmEnroll) {
+   
+   
+    let enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || [];
+    if (enrolledCourses.includes(courseTitle)) {
+      alert('You are already enrolled in this course.');
+      return; // Stop the function if the course is already taken
+    }
+    // Add the new course
+    enrolledCourses.push(courseTitle);
+    
+    
+    localStorage.setItem('enrolledCourses', JSON.stringify(enrolledCourses));
+
+    // Optionally, redirect to the dashboard or update part of the dashboard if it's already loaded
+    window.location.href = 'dashboard.html'; // Redirect to the dashboard
+  }
+}
+
   </script>
 </body>
 </html>
