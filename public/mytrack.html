@@ -8,12 +8,14 @@
 <style>
   body {
     font-family: Arial, sans-serif;
+    background-color: #F5F3EE;
   }
   .active-nav {
     font-weight: bold;
   }
   .mytrack-header {
     display: flex;
+    text-align: center;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
@@ -29,8 +31,8 @@
   .mytrack-nav a {
     display: inline-block;
     text-decoration:none;
-    color: #333;
-    background-color: #e7e7e7;
+    color: #FFF;
+    background-color: #E1895D;
     border: none;
     padding: 10px 20px;
     margin-right: 10px;
@@ -38,7 +40,7 @@
     transition: background-color 0.3s;
   }
   .mytrack-nav a:hover {
-    background-color: #ddd;
+    background-color: #ae6541;
   }
   #timelineList, #dedicationForm {
     list-style-type: none;
@@ -46,43 +48,45 @@
     margin: 20px 0;
   }
   .month-container {
-    flex: 1 1 33%;
+    flex: 1 1 30%;
+    max-width: 1500px;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ddd;
-    margin-bottom: 20px;
-    background-color: #fff;
-    margin-right: 20px;  /* Adds horizontal space between containers */
-    margin-bottom: 20px;  /* Adds vertical space between container rows */
+    background-color: #E7CC65;
+    margin-right: 1.5%;  /* horizontal space between containers */
+    margin-bottom: 20px;  /* vertical space between containers */
+    border-radius: 15px;
   }
   .timeline-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: stretch;
   }
   .month-header {
-    background-color: #f2f2f2;
     padding: 10px;
-    font-size: 1.2em;
-    color: #333;
+    font-size: 2.5em;
+    color: #fff;
     margin-bottom: 5px;
+    text-align: center;
   }
   .section-header {
     font-weight: bold;
+    font-size: 30px;
     list-style-type: none;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 0;
     margin-left: 0;
-    margin: 0 -10px;  /* Extend the header to the full width of the container */
-    background-color: #e7e7e7; /* Light grey background for visibility */
-    border-radius: 5px; /* Optional rounded corners for aesthetic */
   }
   .section-list {
     list-style-type: circle;
-    margin-left: 20px;
+    margin-left: 30px;
     padding-left: 0;
+    font-size: 20px;
   }
+
   #buttonContainer {
   display: flex;
   justify-content: center; /* Center buttons horizontally */
@@ -92,117 +96,73 @@
 
   .plan-button, #undoButton {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 20px;
     color: white;
-    background-color: #4CAF50; /* Green background for visibility */
+    background-color: #1B383A; /* Green background for visibility */
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
 
   .plan-button:hover, #undoButton:hover {
-    background-color: #45a049; /* Slightly darker green on hover */
+    background-color: #122527; /* Slightly darker green on hover */
   }
 
   #undoButton {
-    background-color: #f44336; /* Red background for the undo button */
+    background-color: #b4261c; /* Red background for the undo button */
   }
 
   #undoButton:hover {
-    background-color: #d32f2f; /* Slightly darker red on hover */
+    background-color: #7a1c15; /* Slightly darker red on hover */
   }
-
-
-  /* loader source code: https://www.sliderrevolution.com/resources/css-loaders/  */
-  .loader  {
-  animation: rotate 1s infinite;  
-  height: 50px;
-  width: 50px;
-  position: fixed;
-  left: 50%;
-  top: 34%;
-  transform: translate(-50%, -50%); /* centers loader to be middle of page */
-  z-index: 1000; 
-}
-.loader:before,
-.loader:after {   
-  border-radius: 50%;
-  content: '';
-  display: block;
-  height: 20px;  
-  width: 20px;
-}
-.loader:before {
-  animation: ball1 1s infinite;  
-  background-color: #cb2025;
-  box-shadow: 30px 0 0 #f8b334;
-  margin-bottom: 10px;
-}
-.loader:after {
-  animation: ball2 1s infinite; 
-  background-color: #00a096;
-  box-shadow: 30px 0 0 #97bf0d;
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1050; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; /* Allows scrolling */
 }
 
-@keyframes rotate {
-  0% { 
-    -webkit-transform: rotate(0deg) scale(0.8); 
-    -moz-transform: rotate(0deg) scale(0.8);
-  }
-  50% { 
-    -webkit-transform: rotate(360deg) scale(1.2); 
-    -moz-transform: rotate(360deg) scale(1.2);
-  }
-  100% { 
-    -webkit-transform: rotate(720deg) scale(0.8); 
-    -moz-transform: rotate(720deg) scale(0.8);
-  }
+.modal-content {
+    position: fixed;
+    background-color: #F5F3EE;
+    padding: 40px;
+    border: 1px solid #000;
+    width: 30%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centers it */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 30px;
+    text-align: center;
 }
 
-@keyframes ball1 {
-  0% {
-    box-shadow: 30px 0 0 #f8b334;
-  }
-  50% {
-    box-shadow: 0 0 0 #f8b334;
-    margin-bottom: 0;
-    -webkit-transform: translate(15px,15px);
-    -moz-transform: translate(15px, 15px);
-  }
-  100% {
-    box-shadow: 30px 0 0 #f8b334;
-    margin-bottom: 10px;
-  }
+
+.loader {
+    border: 16px solid #f3f3f3; 
+    border-top: 16px solid #E1895D; 
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
 }
 
-@keyframes ball2 {
-  0% {
-    box-shadow: 30px 0 0 #97bf0d;
-  }
-  50% {
-    box-shadow: 0 0 0 #97bf0d;
-    margin-top: -20px;
-    -webkit-transform: translate(15px,15px);
-    -moz-transform: translate(15px, 15px);
-  }
-  100% {
-    box-shadow: 30px 0 0 #97bf0d;
-    margin-top: 0;
-  }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+
+
+
 
 </style>
 </head>
@@ -220,30 +180,32 @@
 </div>
 <div id="timelineDisplay"> 
   <h2>Career Track Timeline</h2>
+  <h3>Not sure where to start? Don't worry - we have created a personalized career development timeline just for you!</h3>
   <div id="buttonContainer" style="margin-top: 20px;">
     <button class="plan-button" onclick="setDedication()">Generate a More Detailed Plan</button>
     <button id="undoButton" style="display: none;" onclick="undoDetailedPlan()">Undo Detailed Plan</button>
   </div>
   <div id="timelineList" class="timeline-row"></div>
   <!-- this is a loading spinner/circle as we wait for detailedPlan to show up -->
-  <div id="loadingIndicator" style="display: none;" class="loader">
-  </div>
-  <!-- loading message -->
-  <div id="loadingModal" class="modal">
+  
+  <div class="modal" id="myModal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Generating your detailed plan...</p>
+        <p>Your detailed plan is being generated. Please wait...</p>
+        <div class="loader"></div>
     </div>
+</div>
   </div>
-
 </div>
 </div>
 
 <script>
+
+
 document.addEventListener("DOMContentLoaded", function() {
     buildTimeline();
     loadDetailedPlans();
 });
+
 function loadDetailedPlans() {
     const storedPlans = localStorage.getItem('detailedPlans');
     if (storedPlans) {
@@ -440,10 +402,9 @@ function undoDetailedPlan(){
 
 // adds loading screen/buffer for when the detailedPlan
 function showLoad(display) {
-  document.getElementById('loadingIndicator').style.display = display ? 'flex' : 'none';
+  const modal = document.getElementById('myModal');
+  modal.style.display = display ? 'block' : 'none';
 }
-
-
 </script>
 </body>
 </html>
