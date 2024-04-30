@@ -186,7 +186,7 @@ textarea {
   
   <div class="jobs-header">
     <div class="logo-and-title">
-      <img src="/images/logo.png" alt="Company Logo" style="height: 100px;">
+      <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
       <h1>Jobs</h1>
     </div>
     <ul class="jobs-nav">
@@ -291,9 +291,11 @@ textarea {
       // email, title, company
       currentJobEmail = job.email;
       currentJobTitle = job.title;
+      currentJobCompany = job.company;
+      currentTime = new Date().toISOString();
       location.href = `mailto:${job.email}?subject=Interested in ${job.title} Job`;
       console.log('Applying directly to job:', job.title);
-      saveJob({ job, time: new Date().toISOString() });
+      saveJob(currentJobTitle, currentJobCompany, currentJobEmail, currentTime);
     }
 
     document.getElementById('send-btn').addEventListener('click', function() {
@@ -318,6 +320,8 @@ textarea {
       // company, title, description, email
       currentJobEmail = job.email;
       currentJobTitle = job.title;
+      currentJobCompany = job.company;
+      currentTime = new Date().toISOString();
       let company = job.company;
       let title = job.title;
       let description = job.description;
@@ -399,27 +403,32 @@ textarea {
     document.getElementById('searchBar').addEventListener('input', searchJobs);
     window.addEventListener('DOMContentLoaded', loadJobs);
 
-    function saveJob(currJob, time) {
+    function saveJob(title, company, email, time) {
       var jobApplications = JSON.parse(localStorage.getItem('jobApplications')) || [];
-      var existingJob = false;
+      // in email replace \\r or \r with ''
+      email = email.replace(/\\r/g, '').replace(/\r/g, '');
+      var jobExists = false;
 
-      console.log(jobApplications.currJob);
 
+      let job = [title, company, email, time];
+      
       jobApplications.forEach(application => {
-        console.log(application.job.job.title);
-          if (application.job.title === currJob.job.title) {
-            existingJob = true;
-            console.log(application.job.job.title);
-          }
+        console.log(application[0], title, application[1], company, application[2].trim(), email);
+        if (application[0] === title && application[1] === company && application[2] === email) {
+          console.log('Job already exists in job applications');
+          jobExists = true;
+          return;
+        }
       });
-
-      if (existingJob) {
-      console.log("Job already exists");
-      console.log(existingJob);
-      return;
+      
+      if (jobExists) {
+        return;
+      } else {
+        jobApplications.push(job);
+        localStorage.setItem('jobApplications', JSON.stringify(jobApplications));
+        console.log('Job saved to job applications:', job);
+        console.log('Job applications:', jobApplications);
       }
-      jobApplications.push({currJob, time});
-      localStorage.setItem('jobApplications', JSON.stringify(jobApplications));
     }
 
   </script>

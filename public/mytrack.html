@@ -157,6 +157,10 @@
   .mytrack-nav a:hover {
     background-color: #ae6541;
   }
+  .logo-and-title {
+  display: flex;
+  align-items: center; 
+  }
   #timelineList, #dedicationForm {
     list-style-type: none;
     padding: 0;
@@ -285,7 +289,10 @@
 <body>
 
 <div class="mytrack-header">
-  <h1>My Track Career Timeline</h1>
+  <div class="logo-and-title">
+    <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+    <h1><h1>MyTrack Career Timeline</h1></h1>
+  </div>
   <ul class="mytrack-nav">
     <li><a href="dashboard.html">Dashboard</a></li>
     <li><a href="jobs.html">Jobs</a></li>

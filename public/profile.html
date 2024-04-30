@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
   <link rel="icon" type="image/x-icon" href="/images/icon.ico">
-  <link
+  <!--<link
   href="https://fonts.googleapis.com/css?family=Fira+Sans"
   rel="stylesheet"
 />
@@ -15,7 +15,7 @@
   href="/vendor/bootstrap/css/bootstrap.css"
 />
 <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-<!-- <link rel="stylesheet" type="text/css" href="/css/main.css" /> -->
+<link rel="stylesheet" type="text/css" href="/css/main.css" /> -->
 <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   <style>
     body {
@@ -59,6 +59,10 @@
     .settings-nav a:hover {
       background-color: #ddd; 
     }
+    .logo-and-title {
+      display: flex;
+      align-items: center; 
+    } 
     .settings-welcome {
       text-align: center;
     }
@@ -111,7 +115,10 @@
 <body>
 
 <div class="settings-header">
-  <h1>Profile</h1>
+  <div class="logo-and-title">
+    <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+    <h1><h1>Profile</h1></h1>
+  </div>
   <ul class="settings-nav">
     <li><a href="dashboard.html">Dashboard</a></li>
     <li><a href="jobs.html">Jobs</a></li>

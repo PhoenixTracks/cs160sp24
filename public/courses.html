@@ -57,6 +57,10 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+  .logo-and-title {
+  display: flex;
+  align-items: center; 
+  }
   .courses-listing {
     display: grid;
     grid-template-columns: 0.6fr;
@@ -121,7 +125,10 @@
 </head>
 <body>
   <div class="courses-header">
-    <h1>Courses</h1>
+    <div class="logo-and-title">
+      <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+      <h1>Courses</h1>
+    </div>
     <ul class="courses-nav">
       <li><a href="dashboard.html">Dashboard</a></li>
       <li><a href="jobs.html">Jobs</a></li>

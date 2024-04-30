@@ -209,7 +209,7 @@
 <div class="dashboard-header">
 
   <div class="logo-and-title">
-    <img src="/images/logo.png" alt="Company Logo" style="height: 100px;">
+    <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
     <h1>Dashboard</h1>
   </div>
   <ul class="dashboard-nav">
@@ -302,7 +302,22 @@
       // Display job applications
       jobApplications.forEach(application => {
           const jobElement = document.createElement('li');
-          jobElement.textContent = `${application.job.job.title} at ${application.job.job.company} - ${application.job.time}`;
+          // convert time to human readable format, 2 days ago, 3 weeks ago, etc.
+          // application[3] looks like 2024-04-30T21:26:29.120Z
+          const timeAgo = new Date(application[3]);
+          const now = new Date();
+          const diffTime = Math.abs(now - timeAgo);
+          const diffHours = Math.ceil(diffTime / (1000 * 60 * 60));
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+          let timeAgoText = '';
+          if (diffHours < 25) {
+          timeAgoText = ' less than 1 day ago';
+          } else {
+          timeAgoText = `${diffDays} ${diffDays === 1 ? 'day' : 'days'} ago`;
+          }
+
+          jobElement.textContent = `${application[0]} at ${application[1]} - ${timeAgoText}`;
           jobsContainer.appendChild(jobElement);
       });
 
