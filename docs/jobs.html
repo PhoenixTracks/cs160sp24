@@ -129,7 +129,7 @@ textarea {
       <li><a href="courses" class="nav-btn">Courses</a></li>
       <li><a href="mytrack" class="nav-btn">MyTrack</a></li>
       <li><a href="profile" class="nav-btn">Profile</a></li>
-      <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
+      <li><a id="darkModeButton" onclick="toggleDarkMode()">🌙</a></li>
     </ul>
   </div>
 
@@ -371,7 +371,14 @@ textarea {
     var currentTheme = document.body.getAttribute('data-theme');
     var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); 
+    localStorage.setItem('theme', newTheme);
+    if(newTheme === 'dark') {
+      document.getElementById('darkModeButton').textContent = '☀️';
+      document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+    } else {
+      document.getElementById('darkModeButton').textContent = '🌙';
+      document.querySelector('.nav-header').style.backgroundColor = '#fff';
+    }
   }
   document.addEventListener("DOMContentLoaded", function() {
     const hamburger = document.querySelector(".hamburger");

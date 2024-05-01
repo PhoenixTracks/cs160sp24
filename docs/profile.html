@@ -11,7 +11,7 @@
   rel="stylesheet"
 />
 
-<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
   <style>
     :root {
       --card-background: #f5f3ee; /* Default background color for light mode */
@@ -88,7 +88,7 @@
     <li><a href="courses">Courses</a></li>
     <li><a href="mytrack">MyTrack</a></li>
     <li><a href="profile" class="active-nav">Profile</a></li>
-    <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
+    <li><a id="darkModeButton" onclick="toggleDarkMode()">🌙</a></li>
   </ul>
 </div>
 
@@ -110,12 +110,12 @@
   <div class="quiz-question">
     <h3>What skills do you have?</h3>
     <input type="text" id="searchBox1" class="quiz-input" placeholder="Search...">
-    <div id="results1"></div>
+    <div style="color: black !important" id="results1"></div>
   </div>
   <div class="quiz-question">
     <h3>What skills would you like to learn?</h3>
     <input type="text" id="searchBox2" class="quiz-input" placeholder="Search...">
-    <div id="results2"></div>
+    <div style="color: black !important" id="results2"></div>
   </div>
   <div class="quiz-question">
     <h3>Select a Timeframe for Each Skill</h3>
@@ -170,13 +170,26 @@
   });
   if(localStorage.getItem('theme') === 'dark') {
     document.body.setAttribute('data-theme', 'dark');
+    document.getElementById('darkModeButton').textContent = '☀️';
   }
 
   function toggleDarkMode() {
     var currentTheme = document.body.getAttribute('data-theme');
     var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); 
+    localStorage.setItem('theme', newTheme);
+    if(newTheme === 'dark') {
+      document.getElementById('darkModeButton').textContent = '☀️';
+      document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+      document.querySelector('.result-item').style.color = '#000 !important';
+      document.querySelector('#result1').style.color = '#000 !important';
+      document.querySelector('#result2').style.color = '#000 !important';
+    } else {
+      document.getElementById('darkModeButton').textContent = '🌙';
+      document.querySelector('.nav-header').style.backgroundColor = '#fff';
+      document.querySelector('.result-item').style.backgroundColor = '#f0f0f0';
+      document.querySelector('.result-item').style.color = '#000';
+    }
   }
   document.addEventListener("DOMContentLoaded", function() {
     const hamburger = document.querySelector(".hamburger");
