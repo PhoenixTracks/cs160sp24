@@ -17,6 +17,10 @@
     --card-background: #2C3E50; /* Dark mode background color */
     --text-color: #fff; /* Dark mode text color */
   }
+  p {
+    font-size: 23px;
+    text-align: center;
+  }
   .dashboard-welcome {
     text-align: center;
   }
@@ -56,6 +60,22 @@
     /*border-radius: 8px;
     /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
   }
+  .search-bar {
+    width: 43%; 
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px; 
+  }
+  .search-btn {
+    width: 15%;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:  #e1895d;;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   
 </style>
 </head>
@@ -77,14 +97,15 @@
   </div>
 
   <br>
+  <div class="welcome-message">
+    <p>Dive into our tailored course recommendations, perfectly matched to your interest! Let's unlock your potential together.</p>
+  </div>
   <div style="text-align: center;">
     <input type="text" id="searchBar" placeholder="Search..." class="search-bar">
     <button onclick="toggleFilter()" id="filterButton" class="search-btn">Filter by Skills to Learn</button>
   </div>
   
-  <div class="welcome-message">
-    <p>Dive into our tailored course recommendations, perfectly matched to your interest! Let's unlock your potential together.</p>
-  </div>
+  
 
   <div class="courses-listing">
     <div class="course-card">
