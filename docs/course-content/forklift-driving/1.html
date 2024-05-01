@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <title>Courses</title>
+  <link rel="icon" type="image/x-icon" href="/images/icon.ico">
+<style>
+  .dashboard-welcome {
+    text-align: center;
+  }
+  .courses-listing {
+    display: grid;
+    grid-template-columns: 0.6fr;
+    gap: 30px;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  .course-card {
+    background-color: #f5f3ee;
+    border-radius: 5px;
+    border-style: solid;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .course-card img {
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+  }
+  .course-card:hover {
+    transform: translateY(-0.5rem) scale(1.02);
+  }
+  .welcome-message {
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    /*color: #2a2a2a; 
+    /*background-color: #f0f0f0; 
+    /*border-radius: 8px;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+  }
+  
+</style>
+</head>
+<body>
+  <div class="nav-header">
+    <div class="logo-and-title">
+      <a href="dashboard"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+      <h1>Forklift Driving Course - Page 1</h1>
+    </div>
+    <ul class="nav">
+      <li><a href="/dashboard.html">Dashboard</a></li>
+      <li><a href="/jobs.html">Jobs</a></li>
+      <li><a href="/courses.html">Courses</a></li>
+      <li><a href="/mytrack.html">MyTrack</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+    </ul>
+  </div>
+
+  <br>
+  <div style="text-align: center;">
+    <input type="text" id="searchBar" placeholder="Search..." class="search-bar">
+    <button onclick="toggleFilter()" id="filterButton" class="search-btn">Filter by Skills to Learn</button>
+  </div>
+  
+  <div class="welcome-message">
+    <p>Dive into our tailored course recommendations, perfectly matched to your interest! Let's unlock your potential together.</p>
+  </div>
+
+  <div class="courses-listing">
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">Take</button>
+    </div>
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">Take</button>
+    </div>
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">Take</button>
+    </div>
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">Take</button>
+    </div>
+    <div class="course-card">
+      <h2>Course Title</h2>
+      <p>Course Description...</p>
+      <button class="view-btn">Take</button>
+    </div>
+    
+    <div class="courses-listing">
+    </div>
+
+
+  </div>
+
+  <script>
+  
+  </script>
+</body>
+</html>
