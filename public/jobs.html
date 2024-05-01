@@ -103,7 +103,7 @@ textarea {
   <div class="popup-background">
     <div class="popup-content" onclick="event.stopPropagation()">
       <div class="popup-content-header">
-        <h3>Email</h3>
+        <h3>Email Draft</h3>
         <button onclick="closePopup()" class="close-btn">x</button>
       </div>
       <textarea
@@ -111,11 +111,13 @@ textarea {
         placeholder="Loading email..." 
         aria-label="Loading email..." 
       ></textarea>
-      <button id="copy-btn" class="copy-btn">Copy Text</button>
-      <button id="send-btn" class="send-btn">Send Email</button>
+      <br>
+      <span style="display: flex; justify-content: flex-end; gap: 10px; margin: 5px; align-items: center;">
+        <button id="send-btn" class="send-btn search-btn" style="width: 20%; background-color: #4285F4;">Send Email</button>
+        <button id="copy-btn" class="copy-btn search-btn" style="width: 20%;">Copy Text</button>
+      </span>
     </div>
   </div>
-
   <br>
   <div style="text-align: center;">
     <input type="text" id="searchBar" placeholder="Search..." class="search-bar">
@@ -173,6 +175,7 @@ textarea {
     }
 
     document.getElementById('copy-btn').addEventListener('click', function() {
+      saveJob(currentJobTitle, currentJobCompany, currentJobEmail, currentTime);
       const textarea = document.getElementById('email-body');
       navigator.clipboard.writeText(textarea.value)
         .then(() => {
@@ -223,6 +226,7 @@ textarea {
 
       document.querySelector('.popup-background').style.display = 'flex';
       const mySkills = localStorage.getItem('selectedItems1');
+      const name = localStorage.getItem('name');
 
       const response = await fetch (
         //'https://noggin.rea.gent/ugliest-butterfly-8606', real API
@@ -235,11 +239,11 @@ textarea {
             Authorization: 'Bearer rg_v1_qtgpnne6h5bhf1h1ybjeqhzym34kk2msjo1s_ngk',
           },
           body: JSON.stringify({
-            // fill variables here.
             "role": title,
             "company": company,
             "description": description,
             "skills": mySkills,
+            "name": name
           }),
         }
       ).then(response => response.text());
@@ -253,7 +257,6 @@ textarea {
       document.querySelector('.popup-background').style.display = 'none';
       document.getElementById('email-body').value = "";
     }
-
 
     function toggleFilter() {
       filterActive = !filterActive;
@@ -300,7 +303,6 @@ textarea {
 
     function saveJob(title, company, email, time) {
       var jobApplications = JSON.parse(localStorage.getItem('jobApplications')) || [];
-      // in email replace \\r or \r with ''
       email = email.replace(/\\r/g, '').replace(/\r/g, '');
       var jobExists = false;
 

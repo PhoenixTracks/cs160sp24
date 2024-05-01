@@ -74,7 +74,7 @@ app.get("/dashboard", async (request, response) => {
 
 // Express has a helper function for this, so we don't need to use the filesystem library directly:
 app.get("/courses", (request, response) => {
-  response.status(200).sendFile("public/courses.html", { root: __dirname }); // We do need to tell Express where to look!
+  response.status(200).sendFile("public/courses.html", { root: __dirname }); 
 });
 
 app.get("/jobs", (request, response) => {
@@ -93,8 +93,8 @@ app.get("/profile", (request, response) => {
   response.status(200).sendFile("public/profile.html", { root: __dirname });
 });
 
-app.get("/t7", (request, response) => {
-  response.status(200).sendFile("public/t7.html", { root: __dirname });
+app.get("/", (request, response) => {
+  response.status(200).sendFile("public/index.html", { root: __dirname });
 });
 
 // Now, we can access our HTML using these more convenient `/t1`, `/t2`, etc. routes.
