@@ -1,4 +1,3 @@
-/* Existing CSS styles */
 body {
     font-family: Tahoma, sans-serif;
     background-color: var(--background-color, #f1e7e1); /* Use variable for background color */
@@ -112,4 +111,38 @@ body {
     --hover-bg-color: #1ABC9C;
     --modal-bg-color: #2C3E50;
 
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;  /* Show the hamburger icon on small screens */
+    }
+
+    .nav {
+        display: none; /* Hide the navigation bar on small screens */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position directly below the nav-header */
+        width: 100%; /* Full width */
+        background-color: var(--background-color, #f1e7e1);
+        align-items:flex-end;
+    }
+
+    .nav.active {
+        display: flex;
+        width: 30%;
+        top: 60px;
+        background-color: var(--header-bg-color, #f5f3ee);
+        right: 10%;
+        align-content: center;
+        gap: 10px;
+        flex-direction: column;
+    }
+    
+    
 }

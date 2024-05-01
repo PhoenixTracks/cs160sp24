@@ -65,6 +65,7 @@
       <a href="dashboard"><img src="images/logo.png" alt="Company Logo" style="height: 100px;"></a>
       <h1>Courses</h1>
     </div>
+    <button class="hamburger">☰</button> 
     <ul class="nav">
       <li><a href="dashboard">Dashboard</a></li>
       <li><a href="jobs">Jobs</a></li>
@@ -220,7 +221,15 @@ if(localStorage.getItem('theme') === 'dark') {
     document.body.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme); 
   }
+  document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav");
 
+    hamburger.addEventListener("click", function() {
+        navMenu.classList.toggle("active");  // Toggle visibility
+        console.log("Toggle class 'active': ", navMenu.classList.contains("active"));
+    });
+});
   </script>
 </body>
 </html>
