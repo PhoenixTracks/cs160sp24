@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <title>Courses</title>
+  <link rel="icon" type="image/x-icon" href="images/icon.ico">
+<style>
+  .dashboard-welcome {
+    text-align: left;
+  }
+  .courses-listing {
+    display: grid;
+    grid-template-columns: 0.6fr;
+    gap: 30px;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  .course-card {
+    background-color: #f5f3ee;
+    border-radius: 5px;
+    border-style: solid;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .course-card img {
+    width: 100%;
+    height: auto;
+    max-width: 100px;
+  }
+  .course-card:hover {
+    transform: translateY(-0.5rem) scale(1.02);
+  }
+  .welcome-message {
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    /*color: #2a2a2a; 
+    /*background-color: #f0f0f0; 
+    /*border-radius: 8px;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+  }
+  .sidebar {
+    width: 250px;
+    background: #333;
+    color: white;
+    position:absolute;
+    z-index: 1;
+    overflow: auto;
+    height: 120%;
+  }
+  .sidebar h2 {
+      margin-top:0;
+      padding-top:20px;
+  }
+  .sidebar ul {
+      list-style-type:none;
+      padding-left:0;
+      margin-bottom:0;
+  }
+  .sidebar li a {
+      display:block;
+      color:white;
+      padding:8px 16px;
+      text-decoration:none;
+  }
+  .sidebar li a:hover {
+     background-color:#000000;
+  }
+  .sidebar li a.active {
+      background-color:#4CAF50;
+      color:white;
+      
+  }
+  .content { 
+    margin-left: 210px; 
+    padding: 10px; 
+  }
+  
+</style>
+</head>
+<body>
+  <div class="nav-header">
+    <div class="logo-and-title">
+      <a href="/dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+      <h1>Forklift Driving Course</h1>
+    </div>
+    <ul class="nav">
+      <li><a href="/dashboard.html">Dashboard</a></li>
+      <li><a href="/jobs.html">Jobs</a></li>
+      <li><a href="/courses.html">Courses</a></li>
+      <li><a href="/mytrack.html">MyTrack</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+    </ul>
+  </div>
+  <div class="sidebar">
+    <h2 style="text-align: center;">Course Content</h2>
+    <ul>
+      <li><a href="/course-content/forklift-driving/1.html">Basics of Forklifts</a></li>
+      <li><a class="active">Forklift Safety</a></li>
+      <li><a href="/course-content/forklift-driving/3.html">Page 3</a></li>
+      <li><a href="/course-content/forklift-driving/4.html">Page 4</a></li>
+      <li><a href="/course-content/forklift-driving/5.html">Page 5</a></li>
+    </ul>
+  </div>
+
+  <div>
+    <div style="text-align: center;" class="content">
+      <h2>Forklift Safety</h2>
+      <p>A forklift requires a keen awareness of safety protocols to prevent accidents and ensure a secure work environment. Before operation, it is crucial to perform a thorough pre-check of the forklift, including its tires, brakes, controls, warning devices, and mast. During operation, maintain a clear line of sight, adhere to load capacity limits, and navigate with caution, especially around pedestrians and in areas with high traffic. After operation, park the forklift in a designated area, lower the forks to the ground, and secure it from unauthorized use. Remember, safety is a shared responsibility; always wear your seatbelt, keep a vigilant eye, and follow the established safety guidelines to protect yourself and others.</p>
+      <br>
+      <hr>
+      <br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/fPhynD2yuBE?si=Fsk0O8Yrcj2iLqTA&amp;start=19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <br>
+      <h3>Quiz: Forklift Safety</h3>
+      <form id="forklift-safety-quiz">
+        <p>1. What is the first thing you should do before driving a forklift?</p>
+        <input type="radio" id="q1a1" name="question1" value="Check for damage">
+        <label for="q1a1">Check the forklift for any damage</label><br>
+        <input type="radio" id="q1a2" name="question1" value="Start">
+        <label for="q1a2">Start the forklift</label><br>
+        <input type="radio" id="q1a3" name="question1" value="Drive">
+        <label for="q1a3">Drive the forklift</label><br>
+        <input type="radio" id="q1a4" name="question1" value="Notify supervisor">
+        <label for="q1a4">Notify your supervisor</label><br>
+
+        <br>
+
+        <p>2. When should a forklift be inspected?</p>
+        <input type="radio" id="q2a1" name="question2" value="Before each use">
+        <label for="q2a1">Before each use</label><br>
+        <input type="radio" id="q2a2" name="question2" value="Weekly">
+        <label for="q2a2">Weekly</label><br>
+        <input type="radio" id="q2a3" name="question2" value="Monthly">
+        <label for="q2a3">Monthly</label><br>
+        <input type="radio" id="q2a4" name="question2" value="Annually">
+        <label for="q2a4">Annually</label><br>
+
+        <br>
+
+        <p>3. What should forklift operators do when moving through pedestrian traffic?</p>
+        <input type="radio" id="q3a1" name="question3" value="Use horn">
+        <label for="q3a1">Use the horn at intersections to alert pedestrians</label><br>
+        <input type="radio" id="q3a2" name="question3" value="Drive fast">
+        <label for="q3a2">Drive fast to minimize time in the area</label><br>
+        <input type="radio" id="q3a3" name="question3" value="Ignore pedestrians">
+        <label for="q3a3">Ignore pedestrians and focus on the path</label><br>
+        <input type="radio" id="q3a4" name="question3" value="Turn off lights">
+        <label for="q3a4">Turn off all lights to save energy</label><br>
+      </form>
+      <br>
+      <br>
+      <br>
+      <button id="login" class="search-btn" onclick="window.location.href='/forklift-driving/2.html'">Next Page</button>
+    </div>
+  </div>
+
+
+
+  <script>
+  
+  </script>
+</body>
+</html>

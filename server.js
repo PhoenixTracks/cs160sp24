@@ -18,8 +18,8 @@ const app = express();
 //   before our custom request handlers are invoked.
 app.use(
   // The built-in `express.static` middleware directs Express to look in a particular directory
-  //   (the local 'public' directory, in our case) for files requested by clients. For example,
-  //   if the user visits `/a.html`, Express will look for `public/a.html` and, if the file is
+  //   (the local 'docs' directory, in our case) for files requested by clients. For example,
+  //   if the user visits `/a.html`, Express will look for `docs/a.html` and, if the file is
   //   found, read the contents of the file and return those contents to the user.
   // This is especially useful for assets without dynamic content like images, .css, and .js files,
   //   since we can add them to our project folder and use them without having to ask the server
@@ -94,6 +94,7 @@ app.get("/profile", (request, response) => {
 });
 
 app.get("/", (request, response) => {
+  response.status(200).sendFile("docs/index.html", { root: __dirname });
 });
 
 // Now, we can access our HTML using these more convenient `/t1`, `/t2`, etc. routes.
