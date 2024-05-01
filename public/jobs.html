@@ -130,6 +130,7 @@ textarea {
     var currentJobEmail = null;
     var currentJobTitle = null;
     let filterActive = false;
+    
     function loadJobs() {
       fetch('jobs.csv')
         .then(response => response.text())

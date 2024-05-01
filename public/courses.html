@@ -10,16 +10,7 @@
   .dashboard-welcome {
     text-align: center;
   }
-  .skills-section, .applications-section, .courses-section {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .logo-and-title {
-  display: flex;
-  align-items: center; 
-  }
+
   .courses-listing {
     display: grid;
     grid-template-columns: 0.6fr;
@@ -114,16 +105,19 @@
 
 
   </div>
+
   <script>
     var allCourses = [];
+    let filterActive = false;
 
     function loadCourses() {
       fetch('courses.csv')
         .then(response => response.text())
         .then(text => {
           allCourses = parseCSV(text); 
-          const selectedSkills = JSON.parse(localStorage.getItem('selectedItems2')) || [];
-          displayCourses(selectedSkills.length ? filterCoursesBySkills(allCourses, selectedSkills) : allCourses);
+          // const selectedSkills = JSON.parse(localStorage.getItem('selectedItems2')) || [];
+          // displayCourses(selectedSkills.length ? filterCoursesBySkills(allCourses, selectedSkills) : allCourses);
+          displayCourses(allCourses);
         })
         .catch(error => {
           console.error('Error loading courses:', error);
@@ -137,26 +131,38 @@
       });
     }
 
+    function toggleFilter() {
+      filterActive = !filterActive;
+      if (filterActive) {
+        document.getElementById('filterButton').textContent = 'Show All Courses';
+        filterCoursesBySkills(allCourses, JSON.parse(localStorage.getItem('selectedItems2')) || []);
+      } else {
+        document.getElementById('filterButton').textContent = 'Filter by Skills to Learn';
+        loadCourses();
+      }
+    }
+
     function filterCoursesBySkills(courses, selectedSkills) {
-      return courses.filter(course => {
+      const filteredCourses = courses.filter(course => {
         return selectedSkills.some(skill => course.description.toLowerCase().includes(skill.toLowerCase()));
       });
+      displayCourses(filteredCourses);
     }
 
     function displayCourses(courses) {
-  const container = document.querySelector('.courses-listing');
-  container.innerHTML = ''; 
-  courses.forEach(course => {
-    const courseCard = document.createElement('div');
-    courseCard.className = 'course-card';
-    courseCard.innerHTML = `
-      <h2>${course.title}</h2>
-      <p>${course.description}</p>
-      <button class="view-btn" onclick="takeCourse('${course.title}')">Take</button>
-    `;
-    container.appendChild(courseCard);
-  });
-}
+      const container = document.querySelector('.courses-listing');
+      container.innerHTML = ''; 
+      courses.forEach(course => {
+        const courseCard = document.createElement('div');
+        courseCard.className = 'course-card';
+        courseCard.innerHTML = `
+          <h2>${course.title}</h2>
+          <p>${course.description}</p>
+          <button class="view-btn" onclick="takeCourse('${course.title}')">Take</button>
+        `;
+        container.appendChild(courseCard);
+      });
+    }
 
     function searchCourses() {
       const searchTerm = document.getElementById('searchBar').value.toLowerCase();
