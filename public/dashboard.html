@@ -116,6 +116,15 @@
     border-radius: 5px;
     margin: 10px 0;
 }
+.bio-container {
+    margin-top: 40px; 
+    color: var(--font-color);
+    display: block; 
+    margin-left: 40px;
+  }
+
+
+
 
 .progress-bar {
     height: 20px;
@@ -181,9 +190,9 @@
       
       <input type="File" name="fileToUpload" id="fileToUpload">
   </div>
- 
+  
 </div>
-
+<div class="bio-container" id="bioContainer"></div>
 
 <div class="dashboard-content">
   <div class="skills-section">
@@ -214,9 +223,18 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
       loadSkills();
-      loadProfilePicture(); // Load the profile picture if it exists in localStorage
+      loadProfilePicture(); 
+      loadBio();
   });
   
+  function loadBio() {
+    const bioContainer = document.getElementById("bioContainer");
+    const storedBio = localStorage.getItem('bio');
+    if (storedBio) {
+        bioContainer.textContent = "Bio: " + storedBio;
+    }
+  }
+
   function loadSkills() {
       const currSkillsContainer = document.getElementById("curr-skillsList");
       currSkillsContainer.innerHTML = "";

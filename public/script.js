@@ -137,10 +137,13 @@ document.getElementById("submit").addEventListener("click", function() {
 
 function saveToLocalStorage() {
   var name = document.getElementById('nameBox').value.trim();
+
+  var bio = document.getElementById('bioInput').value.trim();
   localStorage.setItem('name', name);
   localStorage.setItem('selectedItems1', JSON.stringify(selectedItems1)); // existing skills
   localStorage.setItem('selectedItems2', JSON.stringify(selectedItems2));
   localStorage.setItem('skillTimeFrames', JSON.stringify(skillTimeFrames)); // dictionary -> key: skill, value: # of months
   localStorage.setItem('dailyHours', dailyHours);
+  localStorage.setItem('bio', bio);
   localStorage.setItem("existUser", 1);
 }
