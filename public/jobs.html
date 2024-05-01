@@ -195,7 +195,7 @@ textarea {
     document.getElementById('send-btn').addEventListener('click', function() {
       const textarea = document.getElementById('email-body');
       location.href = `mailto:${currentJobEmail}?subject=Interested in ${currentJobTitle} Job&body=${textarea.value}`;
-
+      saveJob(currentJobTitle, currentJobCompany, currentJobEmail, currentTime);
     });
 
     function adjustTextareaHeight(textarea) {
