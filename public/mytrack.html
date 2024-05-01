@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Career Track Timeline</title>
-<link rel="icon" type="image/x-icon" href="/images/icon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Career Track Timeline</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="/images/icon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <style>
   :root {
   --background-color: #FFFFFF; /* Soft peach, creating a warm and inviting background */
@@ -25,137 +26,138 @@
   --undo-bg-color: #b4261c;
   --undo-hover-color: #7a1c15;
   --hover-bg-color: #DAA49A; /* Dusty rose for hover states, complements navigation text */
-}
+  }
 
-[data-theme="dark"] {
-  --background-color: #2C3E50;
-  --font-color: #ECF0F1;
-  --header-bg-color: #34495E;
-  --nav-bg-color: #16A085;
-  --nav-font-color: #ECF0F1;
-  --section-border-color: #7F8C8D;
-  --month-bg-color: #34495E;
-  --profile-border-color: #BDC3C7;
-  --plan-bg-color: #BDC3C7;
-  --plan-hover-color: #1ABC9C;
-  --undo-bg-color: #4f4949;
-  --undo-hover-color: #cf3c3c;
-}
-  body, h1, h2, h3, p {
+  [data-theme="dark"] {
+    --background-color: #2C3E50;
+    --font-color: #ECF0F1;
+    --header-bg-color: #34495E;
+    --nav-bg-color: #16A085;
+    --nav-font-color: #ECF0F1;
+    --section-border-color: #7F8C8D;
+    --month-bg-color: #34495E;
+    --profile-border-color: #BDC3C7;
+    --plan-bg-color: #BDC3C7;
+    --plan-hover-color: #1ABC9C;
+    --undo-bg-color: #4f4949;
+    --undo-hover-color: #cf3c3c;
+  }
+
+  /* body, h1, h2, h3, p {
     font-family: "Poppins";
     background-color: var(--background-color);
     color: var(--font-color);
-  }
+  } */
 
   .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-style: normal;
-}
+  }
 
-.poppins-extralight {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-}
+  .poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
 
-.poppins-light {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
+  .poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
 
-.poppins-regular {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 
-.poppins-medium {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
+  .poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
 
-.poppins-semibold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-}
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
 
-.poppins-bold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
+  .poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
 
-.poppins-extrabold {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
+  .poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
 
-.poppins-black {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
+  .poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
 
-.poppins-thin-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
+  .poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
 
-.poppins-extralight-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: italic;
-}
+  .poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
 
-.poppins-light-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
+  .poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
 
-.poppins-regular-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
+  .poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
 
-.poppins-medium-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-}
+  .poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
 
-.poppins-semibold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: italic;
-}
+  .poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
 
-.poppins-bold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
+  .poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
 
-.poppins-extrabold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: italic;
-}
+  .poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
 
-.poppins-black-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}
+  .poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
 
-  .active-nav {
+  /* .active-nav {
     font-weight: bold;
   }
   .mytrack-header {
@@ -164,7 +166,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    font-weight: 800;
   }
   .mytrack-nav {
     list-style-type: none;
@@ -188,7 +189,8 @@
   .logo-and-title {
   display: flex;
   align-items: center; 
-  }
+  } */
+
   #timelineList, #dedicationForm {
     list-style-type: none;
     padding: 0;
@@ -262,6 +264,7 @@
   #undoButton:hover {
     background-color: var(--undo-hover-color); 
   }
+
   .modal {
     display: none; 
     position: fixed; 
@@ -271,61 +274,58 @@
     width: 100%; 
     height: 100%; 
     overflow: auto; /* Allows scrolling */
-}
+  }
 
-.modal-content {
-    position: fixed;
-    background-color: #F5F3EE;
-    padding: 40px;
-    border: 1px solid #000;
-    width: 30%; 
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* centers it */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    font-size: 30px;
-    text-align: center;
-}
-
-
-.loader {
-    border: 16px solid #f3f3f3; 
-    border-top: 16px solid #E1895D; 
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+  .modal-content {
+      position: fixed;
+      background-color: #F5F3EE;
+      padding: 40px;
+      border: 1px solid #000;
+      width: 30%; 
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* centers it */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      font-size: 30px;
+      text-align: center;
+  }
 
 
+  .loader {
+      border: 16px solid #f3f3f3; 
+      border-top: 16px solid #E1895D; 
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+  }
 
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
 
 </style>
 </head>
 <body>
 
-<div class="mytrack-header">
+<div class="nav-header">
   <div class="logo-and-title">
-    <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
-    <h1><h1>MyTrack Career Timeline</h1></h1>
+    <a href="dashboard"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+    <h1>MyTrack Career Timeline</h1>
   </div>
-  <ul class="mytrack-nav">
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="jobs.html">Jobs</a></li>
-    <li><a href="courses.html">Courses</a></li>
-    <li><a href="mytrack.html" class="active-nav">MyTrack</a></li>
-    <li><a href="profile.html">Profile</a></li>
+  <ul class="nav">
+    <li><a href="dashboard">Dashboard</a></li>
+    <li><a href="jobs">Jobs</a></li>
+    <li><a href="courses">Courses</a></li>
+    <li><a href="mytrack" class="active-nav">MyTrack</a></li>
+    <li><a href="profile">Profile</a></li>
     <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
   </ul>
 </div>

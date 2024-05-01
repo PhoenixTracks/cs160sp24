@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
   <title>Profile</title>
   <link rel="icon" type="image/x-icon" href="/images/icon.ico">
   <!--<link
@@ -16,53 +17,7 @@
 />
 <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/main.css" /> -->
-<link rel="stylesheet" type="text/css" href="/css/styles.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .active-nav {
-      font-weight: bold;
-    }
-    .settings-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    }
-    .settings-nav {
-      list-style-type: none;
-    }
-    .settings-nav li {
-      display: inline;
-      margin-right: 20px;
-    }
-    .settings-nav {
-      list-style-type: none;
-      padding: 0;
-    }
-    .settings-nav a {
-      justify-content: space-between;
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: #333;
-      background-color: #e7e7e7; 
-      border: none;
-      padding: 10px 20px;
-      text-align: center;
-      display: inline-block;
-      margin-right: 10px;
-      border-radius: 5px; 
-      transition: background-color 0.3s; 
-    }
-    .settings-nav a:hover {
-      background-color: #ddd; 
-    }
-    .logo-and-title {
-      display: flex;
-      align-items: center; 
-    } 
     .settings-welcome {
       text-align: center;
     }
@@ -114,17 +69,17 @@
 </head>
 <body>
 
-<div class="settings-header">
+<div class="nav-header">
   <div class="logo-and-title">
-    <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+    <a href="dashboard"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
     <h1><h1>Profile</h1></h1>
   </div>
-  <ul class="settings-nav">
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="jobs.html">Jobs</a></li>
-    <li><a href="courses.html">Courses</a></li>
-    <li><a href="mytrack.html">MyTrack</a></li>
-    <li><a href="profile.html" class="active-nav">Profile</a></li>
+  <ul class="nav">
+    <li><a href="dashboard">Dashboard</a></li>
+    <li><a href="jobs">Jobs</a></li>
+    <li><a href="courses">Courses</a></li>
+    <li><a href="mytrack">MyTrack</a></li>
+    <li><a href="profile" class="active-nav">Profile</a></li>
   </ul>
 </div>
 

@@ -1,53 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Courses</title>
-<link rel="icon" type="image/x-icon" href="/images/icon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Courses</title>
+  <link rel="icon" type="image/x-icon" href="/images/icon.ico">
 <style>
-  body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .active-nav {
-    font-weight: bold;
-  }
-  .courses-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
-  .courses-nav {
-    list-style-type: none;
-  }
-  .courses-nav li {
-    display: inline;
-    margin-right: 20px;
-  }
-  .courses-nav {
-    list-style-type: none;
-    padding: 0;
-  }
-  .courses-nav a {
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-    background-color: #e7e7e7;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  .courses-nav a:hover {
-    background-color: #ddd;
-  }
   .dashboard-welcome {
     text-align: center;
   }
@@ -70,8 +29,9 @@
     justify-content: center;
   }
   .course-card {
-    background-color: #fff;
+    background-color: #f5f3ee;
     border-radius: 5px;
+    border-style: solid;
     box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
     padding: 10px;
     transition: transform 0.3s ease-in-out;
@@ -84,35 +44,9 @@
   .course-card:hover {
     transform: translateY(-0.5rem) scale(1.02);
   }
-  .view-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    float: right;
-  }
-  .search-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  .search-btn:hover {
-    background-color: #0056b3;
-  }
-  .search-bar {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin: 10px;
-  }
+
   .welcome-message {
     text-align: center;
-    margin: 20px;
     padding: 10px;
     font-size: 16px;
     /*color: #2a2a2a; 
@@ -124,20 +58,21 @@
 </style>
 </head>
 <body>
-  <div class="courses-header">
+  <div class="nav-header">
     <div class="logo-and-title">
-      <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+      <a href="dashboard"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
       <h1>Courses</h1>
     </div>
-    <ul class="courses-nav">
-      <li><a href="dashboard.html">Dashboard</a></li>
-      <li><a href="jobs.html">Jobs</a></li>
-      <li><a href="courses.html" class="active-nav">Courses</a></li>
-      <li><a href="mytrack.html">MyTrack</a></li>
-      <li><a href="profile.html">Profile</a></li>
+    <ul class="nav">
+      <li><a href="dashboard">Dashboard</a></li>
+      <li><a href="jobs">Jobs</a></li>
+      <li><a href="courses" class="active-nav">Courses</a></li>
+      <li><a href="mytrack">MyTrack</a></li>
+      <li><a href="profile">Profile</a></li>
     </ul>
   </div>
 
+  <br>
   <div style="text-align: center;">
     <input type="text" id="searchBar" placeholder="Search..." class="search-bar">
     <button onclick="toggleFilter()" id="filterButton" class="search-btn">Filter by Skills to Learn</button>

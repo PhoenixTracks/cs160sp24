@@ -67,38 +67,30 @@ app.get("/add/:first/:second", (request, response) => {
 //   filesystem operation before responding to the user.
 // Try visiting http://localhost:8000/a rather than http://localhost:8000/a.html -- you'll notice that
 //   it works just the same!
-app.get("/t1", async (request, response) => {
-  const htmlContents = await fs.readFile("public/t1.html");
+app.get("/dashboard", async (request, response) => {
+  const htmlContents = await fs.readFile("public/dashboard.html");
   response.status(200).send(htmlContents.toString());
 });
 
 // Express has a helper function for this, so we don't need to use the filesystem library directly:
-app.get("/t2", (request, response) => {
-  response.status(200).sendFile("public/t2.html", { root: __dirname }); // We do need to tell Express where to look!
+app.get("/courses", (request, response) => {
+  response.status(200).sendFile("public/courses.html", { root: __dirname }); // We do need to tell Express where to look!
 });
 
-app.get("/t3", (request, response) => {
-  response.status(200).sendFile("public/t3.html", { root: __dirname });
+app.get("/jobs", (request, response) => {
+  response.status(200).sendFile("public/jobs.html", { root: __dirname });
 });
 
-app.get("/t4", (request, response) => {
-  response.status(200).sendFile("public/t4.html", { root: __dirname });
+app.get("/mytrack", (request, response) => {
+  response.status(200).sendFile("public/mytrack.html", { root: __dirname });
 });
 
-app.get("/t5", (request, response) => {
-  response.status(200).sendFile("public/t5.html", { root: __dirname });
+app.get("/quiz", (request, response) => {
+  response.status(200).sendFile("public/quiz.html", { root: __dirname });
 });
 
-for (const subpage of ["a", "b", "c", "d", "e"]) {
-  app.get(`/t5/${subpage}`, (request, response) => {
-    response
-      .status(200)
-      .sendFile(`public/t5/${subpage}.html`, { root: __dirname });
-  });
-}
-
-app.get("/t6", (request, response) => {
-  response.status(200).sendFile("public/t6.html", { root: __dirname });
+app.get("/profile", (request, response) => {
+  response.status(200).sendFile("public/profile.html", { root: __dirname });
 });
 
 app.get("/t7", (request, response) => {

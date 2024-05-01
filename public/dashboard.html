@@ -1,97 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
-<link rel="icon" type="image/x-icon" href="/images/icon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <title>Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="/images/icon.ico">
 <style>
   :root {
-  --background-color: #FFFFFF; /* Soft peach, creating a warm and inviting background */
-  --font-color:   #0A174C; /* Medium dark gray for legibility that isn't too harsh */
-  --header-bg-color: #FFFFFF; /* Very light peach, almost white, for header backgrounds */
-  --nav-bg-color:   #D63964; /* Light creamy peach for navigation, offering a gentle visual appeal */
-  --nav-font-color: #DAA49A; /* Dusty rose for navigation text, adding a touch of uniqueness */
-  --section-border-color: #E2C2B9; /* Soft blush for borders, elegant and subtle */
-  --section-bg-color: #FFFFFF; /* Pure white for section backgrounds, clean and classic */
-  --profile-border-color: #E2C2B9; /* Matching the section border for harmony and consistency */
-  --icon-bg-color: #C97B63; /* Warm terracotta for icons, vibrant and expressive */
-  --hover-bg-color: #DAA49A; /* Dusty rose for hover states, complements navigation text */
-}
+    --background-color: #FFFFFF; /* Soft peach, creating a warm and inviting background */
+    --font-color:   #0A174C; /* Medium dark gray for legibility that isn't too harsh */
+    --header-bg-color: #FFFFFF; /* Very light peach, almost white, for header backgrounds */
+    --nav-bg-color:   #D63964; /* Light creamy peach for navigation, offering a gentle visual appeal */
+    --nav-font-color: #DAA49A; /* Dusty rose for navigation text, adding a touch of uniqueness */
+    --section-border-color: #E2C2B9; /* Soft blush for borders, elegant and subtle */
+    --section-bg-color: #FFFFFF; /* Pure white for section backgrounds, clean and classic */
+    --profile-border-color: #E2C2B9; /* Matching the section border for harmony and consistency */
+    --icon-bg-color: #C97B63; /* Warm terracotta for icons, vibrant and expressive */
+    --hover-bg-color: #DAA49A; /* Dusty rose for hover states, complements navigation text */
+  }
 
-[data-theme="dark"] {
-  --background-color: #2C3E50;
-  --font-color: #ECF0F1;
-  --header-bg-color: #34495E;
-  --nav-bg-color: #16A085;
-  --nav-font-color: #ECF0F1;
-  --section-border-color: #7F8C8D;
-  --section-bg-color: #34495E;
-  --profile-border-color: #BDC3C7;
-  --icon-bg-color: #BDC3C7;
-  --hover-bg-color: #1ABC9C;
-}
+  [data-theme="dark"] {
+    --background-color: #2C3E50;
+    --font-color: #ECF0F1;
+    --header-bg-color: #34495E;
+    --nav-bg-color: #16A085;
+    --nav-font-color: #ECF0F1;
+    --section-border-color: #7F8C8D;
+    --section-bg-color: #34495E;
+    --profile-border-color: #BDC3C7;
+    --icon-bg-color: #BDC3C7;
+    --hover-bg-color: #1ABC9C;
+  }
 
-  body {
-    font-family: Arial, sans-serif;
-    background-color: var(--background-color);
-    color: var(--font-color);
-  }
-  .active-nav {
-    font-weight: bold;
-  }
-  .logo-and-title {
-  display: flex;
-  align-items: center; 
-}
-
-.dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: var(--header-bg-color);
-  color: var(--font-color);
-}
-  .dashboard-nav {
-    list-style-type: none;
-  }
-  .dashboard-nav li {
-    display: inline;
-    margin-right: 20px;
-  }
-  .dashboard-nav {
-    list-style-type: none;
-    padding: 0;
-  }
-  .dashboard-nav a {
-    justify-content: space-between;
-    display: flex;
-    
-    align-items: center;
-    text-decoration: none;
-    color: var(--nav-font-color);
-  background-color: var(--nav-bg-color);
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 5px; 
-    transition: background-color 0.3s; 
-  }
-  .dashboard-nav a:hover {
-    background-color: var(--hover-bg-color);
-  }
   .dashboard-welcome {
     display: flex;
     align-items: center; /* Vertically center the content */
     justify-content:  center; /* Horizontally center the content */
     height: 100px; /* Adjust height as needed */
-   
-}
-
-    
+  }
 
   .skills-section, .applications-section, .courses-section {
     margin: 20px;
@@ -206,18 +153,17 @@
 </head>
 <body>
 
-<div class="dashboard-header">
-
+<div class="nav-header">
   <div class="logo-and-title">
-    <a href="dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+    <a href="dashboard"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
     <h1>Dashboard</h1>
   </div>
-  <ul class="dashboard-nav">
-    <li><a href="dashboard.html" class="active-nav">Dashboard</a></li>
-    <li><a href="jobs.html">Jobs</a></li>
-    <li><a href="courses.html">Courses</a></li>
-    <li><a href="mytrack.html">MyTrack</a></li>
-    <li><a href="profile.html">Profile</a></li>
+  <ul class="nav">
+    <li><a href="dashboard" class="active-nav">Dashboard</a></li>
+    <li><a href="jobs">Jobs</a></li>
+    <li><a href="courses">Courses</a></li>
+    <li><a href="mytrack">MyTrack</a></li>
+    <li><a href="profile">Profile</a></li>
     <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
   </ul>
 </div>
