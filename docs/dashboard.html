@@ -412,8 +412,10 @@
           reader.readAsDataURL(file);
       }
   });
+  
   if(localStorage.getItem('theme') === 'dark') {
     document.body.setAttribute('data-theme', 'dark');
+    document.getElementById('darkModeButton').textContent = '☀️';
   }
 
   function toggleDarkMode() {
