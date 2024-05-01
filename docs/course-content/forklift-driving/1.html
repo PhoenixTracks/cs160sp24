@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/styles.css">
-  <title>Courses</title>
+  <title>Forklift Course</title>
   <link rel="icon" type="image/x-icon" href="images/icon.ico">
 <style>
   .dashboard-welcome {
@@ -93,6 +93,7 @@
       <li><a href="/courses.html">Courses</a></li>
       <li><a href="/mytrack.html">MyTrack</a></li>
       <li><a href="/profile.html">Profile</a></li>
+      <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
     </ul>
   </div>
   <div class="sidebar">
@@ -109,7 +110,7 @@
   <div>
     <div style="text-align: center;" class="content">
       <h2>Welcome to the Forklift Driving Course!</h2>
-      <p>This course covers everything from basic forklift design and operation to advanced safety protocols and handling techniques. Whether you’re new to forklift driving or looking to refresh your skills, our expert instructors will guide you through hands-on training and interactive lessons. By the end of this course, you’ll be equipped with the knowledge and confidence to operate forklifts safely and efficiently in any warehouse or industrial setting.</p>
+      <p>This course covers everything from basic forklift design and operation to advanced safety protocols and handling techniques. Whether you're new to forklift driving or looking to refresh your skills, our expert instructors will guide you through hands-on training and interactive lessons. By the end of this course, you'll be equipped with the knowledge and confidence to operate forklifts safely and efficiently in any warehouse or industrial setting.</p>
       <br>
       <hr>
       <br>
@@ -135,7 +136,12 @@
 
 
   <script>
-  
+    function toggleDarkMode() {
+        var currentTheme = document.body.getAttribute('data-theme');
+        var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme); 
+      }
   </script>
 </body>
 </html>

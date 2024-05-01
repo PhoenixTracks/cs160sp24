@@ -240,14 +240,14 @@ textarea {
       const name = localStorage.getItem('name');
 
       const response = await fetch (
-        //'https://noggin.rea.gent/ugliest-butterfly-8606', real API
-        'https://noggin.rea.gent/circular-badger-1650', // test API
+        'https://noggin.rea.gent/ugliest-butterfly-8606', // real API
+        //'https://noggin.rea.gent/circular-badger-1650', // test API
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            //Authorization: 'Bearer rg_v1_eqc8b7b26ek9fmy9r7jnw1mtqsf9y1jo5c3a_ngk',
-            Authorization: 'Bearer rg_v1_qtgpnne6h5bhf1h1ybjeqhzym34kk2msjo1s_ngk',
+            Authorization: 'Bearer rg_v1_eqc8b7b26ek9fmy9r7jnw1mtqsf9y1jo5c3a_ngk',
+            //Authorization: 'Bearer rg_v1_qtgpnne6h5bhf1h1ybjeqhzym34kk2msjo1s_ngk',
           },
           body: JSON.stringify({
             "role": title,
