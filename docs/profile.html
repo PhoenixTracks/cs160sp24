@@ -13,19 +13,29 @@
 
 <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   <style>
+    :root {
+      --card-background: #f5f3ee; /* Default background color for light mode */
+      --text-color: #000; /* Default text color for light mode */
+      }
+
+    [data-theme='dark'] {
+      --card-background: #2C3E50; /* Dark mode background color */
+      --text-color: #fff; /* Dark mode text color */
+    }
     .settings-welcome {
       text-align: center;
     }
     .quiz-section {
-      background-color: #f5f3ee;
+      background-color: var(--card-background);
       margin: 20px;
       padding: 20px;
       border: 1px solid #1b383a;
       border-radius: 5px;
+      color: var(--text-color);
     }
 
     .profile-info {
-      background-color: #f5f3ee;
+      background-color: var(--card-background);
       margin: 20px;
       padding: 20px;
       border: 1px solid #1b383a;
@@ -170,3 +180,4 @@
 </script>
 </body>
 </html>
+

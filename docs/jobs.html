@@ -16,6 +16,10 @@
     --card-background: #2C3E50; /* Dark mode background color */
     --text-color: #fff; /* Dark mode text color */
   }
+  p {
+    font-size: 23px;
+    text-align: center;
+  }
   .jobs-listing {
     display: grid;
     grid-template-columns: 0.6fr;
@@ -92,6 +96,23 @@ textarea {
   box-sizing: border-box; 
   resize: none;
 }
+.search-bar {
+    width: 43%; 
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px; 
+  }
+  .search-btn {
+    width: 15%;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:  #e1895d;;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
 
 </style>
 </head>
@@ -130,6 +151,9 @@ textarea {
     </div>
   </div>
   <br>
+  <div class="welcome-message">
+    <p>Jobs just for you. Let's get to applying!</p>
+  </div>
   <div style="text-align: center;">
     <input type="text" id="searchBar" placeholder="Search..." class="search-bar">
     <button onclick="toggleFilter()" id="filterButton" class="search-btn">Filter by Skills</button>
@@ -351,3 +375,4 @@ textarea {
   </script>
 </body>
 </html>
+
