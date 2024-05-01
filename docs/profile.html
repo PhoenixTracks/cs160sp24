@@ -10,13 +10,7 @@
   href="https://fonts.googleapis.com/css?family=Fira+Sans"
   rel="stylesheet"
 />
-<!-- <link
-  rel="stylesheet"
-  type="text/css"
-  href="/vendor/bootstrap/css/bootstrap.css"
-/> -->
-<!-- <script src="/vendor/bootstrap/js/bootstrap.bundle.js"></script> -->
-<!-- <link rel="stylesheet" type="text/css" href="/css/main.css" /> -->
+
 <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   <style>
     .settings-welcome {
@@ -72,7 +66,7 @@
 
 <div class="nav-header">
   <div class="logo-and-title">
-    <a href="dashboard"><img src="/logo.png" alt="Company Logo" style="height: 100px;"></a>
+    <a href="dashboard"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
     <h1><h1>Profile</h1></h1>
   </div>
   <ul class="nav">
@@ -97,19 +91,16 @@
 <div class="quiz-section">
   <h1>Update Profile</h1>
   <div class="quiz-question">
-    <h4>Question 1</h4>
-    <h6>Full Name</h6>
+    <h3>Full Name</h3>
     <input type="text" id="nameBox" class="quiz-input" placeholder="Jane Doe">
   </div>
   <div class="quiz-question">
-    <h4>Question 2</h4>
-    <h6>What skills do you have?</h6>
+    <h3>What skills do you have?</h3>
     <input type="text" id="searchBox1" class="quiz-input" placeholder="Search...">
     <div id="results1"></div>
   </div>
   <div class="quiz-question">
-    <h4>Question 3</h4>
-    <h6>What skills would you like to learn?</h6>
+    <h3>What skills would you like to learn?</h3>
     <input type="text" id="searchBox2" class="quiz-input" placeholder="Search...">
     <div id="results2"></div>
   </div>
@@ -118,14 +109,11 @@
     <div id="timeFrames"></div>
   </div>
   <div class="quiz-question">
-    <h4>Question 5</h4>
-    <h6>How many hours a day would you like to dedicate?</h6>
+    <h3>How many hours a day would you like to dedicate?</h3>
     <input type="number" id="dailyHoursInput" class="quiz-input" placeholder="Hours per day" min="1" max="10">
   </div>
-
   <div class="quiz-question">
-    <h4>Question 6</h4>
-    <h6>Input a bio here.</h6>
+    <h3>Input a bio here.</h3>
     <input type="text" id="bioInput" class="quiz-input" placeholder="I am a go getter and would like to work in Finance.">
   </div>
 
@@ -136,6 +124,9 @@
 
 
 <script>
+  document.getElementById('nameBox').value = localStorage.getItem('name')
+  document.getElementById('bioInput').value = localStorage.getItem('bio')
+
   document.addEventListener('DOMContentLoaded', function() {
     var skillsHave = JSON.parse(localStorage.getItem('selectedItems1')) || [];
     var skillsLearn = JSON.parse(localStorage.getItem('selectedItems2')) || [];
