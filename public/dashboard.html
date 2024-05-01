@@ -8,16 +8,16 @@
   <link rel="icon" type="image/x-icon" href="/images/icon.ico">
 <style>
   :root {
-    --background-color: #FFFFFF; /* Soft peach, creating a warm and inviting background */
-    --font-color:   #0A174C; /* Medium dark gray for legibility that isn't too harsh */
-    --header-bg-color: #FFFFFF; /* Very light peach, almost white, for header backgrounds */
-    --nav-bg-color:   #D63964; /* Light creamy peach for navigation, offering a gentle visual appeal */
-    --nav-font-color: #DAA49A; /* Dusty rose for navigation text, adding a touch of uniqueness */
-    --section-border-color: #E2C2B9; /* Soft blush for borders, elegant and subtle */
-    --section-bg-color: #FFFFFF; /* Pure white for section backgrounds, clean and classic */
-    --profile-border-color: #E2C2B9; /* Matching the section border for harmony and consistency */
-    --icon-bg-color: #C97B63; /* Warm terracotta for icons, vibrant and expressive */
-    --hover-bg-color: #DAA49A; /* Dusty rose for hover states, complements navigation text */
+    --background-color: #FFFFFF; 
+    --font-color:   #0A174C; 
+    --header-bg-color: #FFFFFF; 
+    --nav-bg-color:   #D63964; 
+    --nav-font-color: #DAA49A; 
+    --section-border-color: #E2C2B9; 
+    --section-bg-color: #FFFFFF; 
+    --profile-border-color: #E2C2B9; 
+    --icon-bg-color: #C97B63; 
+    --hover-bg-color: #DAA49A; 
   }
 
   [data-theme="dark"] {
@@ -35,9 +35,9 @@
 
   .dashboard-welcome {
     display: flex;
-    align-items: center; /* Vertically center the content */
-    justify-content:  center; /* Horizontally center the content */
-    height: 100px; /* Adjust height as needed */
+    align-items: center; 
+    justify-content:  center; 
+    height: 100px; 
   }
 
   .skills-section, .applications-section, .courses-section {
@@ -139,7 +139,7 @@
 
 .update-btn {
     padding: 8px 16px;
-    background-color: var(--icon-bg-color); /* Using the terracotta color defined earlier */
+    background-color: var(--icon-bg-color); 
     color: white;
     font-weight: bold;
     border: none;
@@ -150,12 +150,12 @@
 }
 
 .update-btn:hover, .update-btn:focus {
-    background-color: var(--hover-bg-color); /* Using the dusty rose color for hover state */
+    background-color: var(--hover-bg-color); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .update-btn:active {
-    background-color: #B54A30; /* Darker shade for active state */
+    background-color: #B54A30; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) inset;
 }
 
@@ -292,7 +292,6 @@
 
   }
   
-  // Load the profile picture from localStorage
   function loadProfilePicture() {
       const savedImage = localStorage.getItem('profilePic');
       if (savedImage) {
@@ -300,7 +299,6 @@
       }
   }
   
-  // Event listener for file input change to handle image uploading
   document.getElementById('fileToUpload').addEventListener('change', function(event) {
       const file = event.target.files[0];
       if (file) {
@@ -312,7 +310,6 @@
           reader.readAsDataURL(file);
       }
   });
-  // Initialize or load from localStorage
   if(localStorage.getItem('theme') === 'dark') {
     document.body.setAttribute('data-theme', 'dark');
   }
@@ -321,7 +318,7 @@
     var currentTheme = document.body.getAttribute('data-theme');
     var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); // Save the theme preference
+    localStorage.setItem('theme', newTheme); 
   }
 
   var welcomeMessage = document.getElementById('welcomeMessage');
@@ -332,16 +329,12 @@
 
   
   document.addEventListener('DOMContentLoaded', function() {
-  // Retrieve the array of enrolled courses from local storage
   const enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || [];
 
-  // Target the container where courses will be displayed
   const coursesContainer = document.getElementById('enrolledCoursesContainer'); // Ensure this element exists in your HTML
 
-  // Clear previous contents
   coursesContainer.innerHTML = '';
 
-  // Add each course to the dashboard
   enrolledCourses.forEach(course => {
     const courseElement = document.createElement('div');
     courseElement.textContent = `Enrolled in: ${course}`;
@@ -349,52 +342,69 @@
   });
 });
 document.addEventListener('DOMContentLoaded', function() {
-  // Load or initialize course progress
   loadCourseProgress();
 });
 
 function loadCourseProgress() {
-  const enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || [];
-  const coursesContainer = document.getElementById('enrolledCoursesContainer');
-  coursesContainer.innerHTML = ''; // Clear previous contents
+    const enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || [];
+    const coursesContainer = document.getElementById('enrolledCoursesContainer');
+    coursesContainer.innerHTML = ''; 
 
-  enrolledCourses.forEach(course => {
-    const courseElement = document.createElement('div');
-    courseElement.textContent = `Enrolled in: ${course}`;
-    
-    const progressContainer = document.createElement('div');
-    progressContainer.className = 'progress-container';
-    
-    const progressBar = document.createElement('div');
-    progressBar.className = 'progress-bar';
-    progressBar.style.width = `${getCourseProgress(course)}%`; // Set width to course progress
-    progressBar.textContent = `${getCourseProgress(course)}%`;
-    
-    const updateButton = document.createElement('button');
-    updateButton.textContent = 'Update Progress';
-    updateButton.className = 'update-btn'; // Apply styled class
-    updateButton.onclick = function() { updateCourseProgress(course); };
+    enrolledCourses.forEach(course => {
+        const courseElement = document.createElement('div');
+        courseElement.textContent = `Enrolled in: ${course}`;
+        
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'progress-container';
+        
+        const progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        progressBar.style.width = `${getCourseProgress(course)}%`; 
+        
+        progressBar.textContent = `${getCourseProgress(course)}%`;
 
-    progressContainer.appendChild(progressBar);
-    courseElement.appendChild(progressContainer);
-    courseElement.appendChild(updateButton);
-    coursesContainer.appendChild(courseElement);
-  });
+        const updateButton = document.createElement('button');
+        updateButton.textContent = 'Update Progress';
+        updateButton.className = 'update-btn'; 
+        updateButton.onclick = function() { updateCourseProgress(course); };
+
+        progressContainer.appendChild(progressBar);
+        courseElement.appendChild(progressContainer);
+        courseElement.appendChild(updateButton);
+        coursesContainer.appendChild(courseElement);
+    });
 }
 
-// Function to retrieve course progress, defaulting to 10% for demonstration
+
+
+
 function getCourseProgress(course) {
   const progressData = JSON.parse(localStorage.getItem('courseProgress')) || {};
-  return progressData[course] || 10; // Default to 10% if no data exists
+  return progressData[course] || 0; 
 }
 
 function updateCourseProgress(course) {
   const progressData = JSON.parse(localStorage.getItem('courseProgress')) || {};
-  // Generate a random progress value between 1 and 100% (if you want it to be incremental, you need additional logic)
-  const randomProgress = Math.floor(Math.random() * 100) + 1; // Random progress between 1% and 100%
-  progressData[course] = randomProgress;
+  let progress = progressData[course] || 0; 
+
+  if (progress < 91) {
+    progress += 10; 
+  } else if (progress < 100) {
+    progress = 100; 
+  } else {
+    progress = 0; 
+  }
+
+  progressData[course] = progress;
   localStorage.setItem('courseProgress', JSON.stringify(progressData));
-  loadCourseProgress(); // Refresh the progress bars
+
+  const progressBarText = progress < 100 ? `${progress}%` : "Completed";
+
+  loadCourseProgress(progressBarText);
 }
+
+
+
+
   </script>
   
