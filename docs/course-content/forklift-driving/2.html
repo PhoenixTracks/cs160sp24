@@ -93,6 +93,7 @@
       <li><a href="/courses.html">Courses</a></li>
       <li><a href="/mytrack.html">MyTrack</a></li>
       <li><a href="/profile.html">Profile</a></li>
+      <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
     </ul>
   </div>
   <div class="sidebar">
@@ -161,7 +162,12 @@
 
 
   <script>
-  
+    function toggleDarkMode() {
+        var currentTheme = document.body.getAttribute('data-theme');
+        var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme); 
+      }
   </script>
 </body>
 </html>

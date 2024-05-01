@@ -85,7 +85,7 @@
   <div class="nav-header">
     <div class="logo-and-title">
       <a href="/dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
-      <h1>Forklift Driving Course</h1>
+      <h1 id="course-title">Course</h1>
     </div>
     <ul class="nav">
       <li><a href="/dashboard.html">Dashboard</a></li>
@@ -93,6 +93,7 @@
       <li><a href="/courses.html">Courses</a></li>
       <li><a href="/mytrack.html">MyTrack</a></li>
       <li><a href="/profile.html">Profile</a></li>
+      <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
     </ul>
   </div>
   <div class="sidebar">
@@ -133,10 +134,18 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-    const currentCourse = localStorage.getItem('currentCourse');
-    const courseDescription = document.getElementById('course-paragraph');
-    courseDescription.textContent = `Unfortunately the course, ${currentCourse}, isn't set up to see. It would look a lot like this page though! If you want to see a course that is built, check out the Forklift Driving course!`;
-});
+      const currentCourse = localStorage.getItem('currentCourse');
+      const courseDescription = document.getElementById('course-paragraph');
+      courseDescription.textContent = `Unfortunately the course, ${currentCourse}, isn't set up to see. It would look a lot like this page though! If you want to see a course that is built, check out the Forklift Driving course!`;
+      const courseTitle = document.getElementById('course-title');
+      courseTitle.textContent = currentCourse;
+    });
+    function toggleDarkMode() {
+        var currentTheme = document.body.getAttribute('data-theme');
+        var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme); 
+      }
   </script>
 </body>
 </html>
