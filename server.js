@@ -27,7 +27,7 @@ app.use(
   // Note that `express.static` will send the contents of `index.html` if no path is specified
   //   (i.e. http://localhost:8000/), as is standard. You can configure this if you'd like:
   //   https://expressjs.com/en/4x/api.html#express.static
-  express.static("public/")
+  express.static("docs/")
 );
 
 // That said, we don't *need* to have a file in the filesystem for every route on the server.
@@ -68,33 +68,32 @@ app.get("/add/:first/:second", (request, response) => {
 // Try visiting http://localhost:8000/a rather than http://localhost:8000/a.html -- you'll notice that
 //   it works just the same!
 app.get("/dashboard", async (request, response) => {
-  const htmlContents = await fs.readFile("public/dashboard.html");
+  const htmlContents = await fs.readFile("docs/dashboard.html");
   response.status(200).send(htmlContents.toString());
 });
 
 // Express has a helper function for this, so we don't need to use the filesystem library directly:
 app.get("/courses", (request, response) => {
-  response.status(200).sendFile("public/courses.html", { root: __dirname }); 
+  response.status(200).sendFile("docs/courses.html", { root: __dirname }); 
 });
 
 app.get("/jobs", (request, response) => {
-  response.status(200).sendFile("public/jobs.html", { root: __dirname });
+  response.status(200).sendFile("docs/jobs.html", { root: __dirname });
 });
 
 app.get("/mytrack", (request, response) => {
-  response.status(200).sendFile("public/mytrack.html", { root: __dirname });
+  response.status(200).sendFile("docs/mytrack.html", { root: __dirname });
 });
 
 app.get("/quiz", (request, response) => {
-  response.status(200).sendFile("public/quiz.html", { root: __dirname });
+  response.status(200).sendFile("docs/quiz.html", { root: __dirname });
 });
 
 app.get("/profile", (request, response) => {
-  response.status(200).sendFile("public/profile.html", { root: __dirname });
+  response.status(200).sendFile("docs/profile.html", { root: __dirname });
 });
 
 app.get("/", (request, response) => {
-  response.status(200).sendFile("public/index.html", { root: __dirname });
 });
 
 // Now, we can access our HTML using these more convenient `/t1`, `/t2`, etc. routes.
