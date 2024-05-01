@@ -8,45 +8,42 @@
   <link rel="icon" type="image/x-icon" href="/images/icon.ico">
 <style>
   .dashboard-welcome {
-    text-align: left;
-  }
-  .courses-listing {
-    display: grid;
-    grid-template-columns: 0.6fr;
-    gap: 30px;
-    padding-top: 30px;
-    align-items: center;
-    justify-content: center;
-  }
-  .course-card {
-    background-color: #f5f3ee;
-    border-radius: 5px;
-    border-style: solid;
-    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
-    padding: 10px;
-    transition: transform 0.3s ease-in-out;
-  }
-  .course-card img {
-    width: 100%;
-    height: auto;
-    max-width: 100px;
-  }
-  .course-card:hover {
-    transform: translateY(-0.5rem) scale(1.02);
-  }
-  .welcome-message {
-    text-align: center;
-    padding: 10px;
-    font-size: 16px;
-    /*color: #2a2a2a; 
-    /*background-color: #f0f0f0; 
-    /*border-radius: 8px;
-    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
-  }
-  .container {
-    display: flex;
-  }
-  .sidebar {
+      text-align: left;
+    }
+    .courses-listing {
+      display: grid;
+      grid-template-columns: 0.6fr;
+      gap: 30px;
+      padding-top: 30px;
+      align-items: center;
+      justify-content: center;
+    }
+    .course-card {
+      background-color: #f5f3ee;
+      border-radius: 5px;
+      border-style: solid;
+      box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
+      padding: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .course-card img {
+      width: 100%;
+      height: auto;
+      max-width: 100px;
+    }
+    .course-card:hover {
+      transform: translateY(-0.5rem) scale(1.02);
+    }
+    .welcome-message {
+      text-align: center;
+      padding: 10px;
+      font-size: 16px;
+      /*color: #2a2a2a; 
+      /*background-color: #f0f0f0; 
+      /*border-radius: 8px;
+      /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    }
+    .sidebar {
     width: 250px;
     background: #333;
     color: white;
@@ -106,7 +103,7 @@
       <li><a href="/courses.html">Courses</a></li>
       <li><a href="/mytrack.html">MyTrack</a></li>
       <li><a href="/profile.html">Profile</a></li>
-      <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
+      <li><a id="darkModeButton" href="#" onclick="toggleDarkMode()">🌙</a></li>
     </ul>
   </div>
   <div class="container">
@@ -159,11 +156,23 @@
       courseTitle.textContent = currentCourse;
     });
     function toggleDarkMode() {
-        var currentTheme = document.body.getAttribute('data-theme');
-        var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme); 
-      }
+          var currentTheme = document.body.getAttribute('data-theme');
+          var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          document.body.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          if(newTheme === 'dark') {
+            document.getElementById('darkModeButton').textContent = '☀️';
+            document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+          } else {
+            document.getElementById('darkModeButton').textContent = '🌙';
+            document.querySelector('.nav-header').style.backgroundColor = '#fff';
+          }
+        }
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.setAttribute('data-theme', 'dark');
+          document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+          document.getElementById('darkModeButton').textContent = '☀️';
+        }
   </script>
 </body>
 </html>

@@ -106,7 +106,7 @@
         <li><a href="/courses.html">Courses</a></li>
         <li><a href="/mytrack.html">MyTrack</a></li>
         <li><a href="/profile.html">Profile</a></li>
-        <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
+        <li><a id="darkModeButton" href="#" onclick="toggleDarkMode()">🌙</a></li>
       </ul>
     </div>
     <div class="sidebar">
@@ -144,7 +144,7 @@
         <br>
         <br>
         <br>
-        <button id="login" class="search-btn" onclick="window.location.href='/forklift-driving/2.html'">Next Page</button>
+        <button id="login" class="search-btn" onclick="window.location.href='2.html'">Next Page</button>
         <h2></h2>
       </div>
     </div>
@@ -156,7 +156,19 @@
           var currentTheme = document.body.getAttribute('data-theme');
           var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
           document.body.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme); 
+          localStorage.setItem('theme', newTheme);
+          if(newTheme === 'dark') {
+            document.getElementById('darkModeButton').textContent = '☀️';
+            document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+          } else {
+            document.getElementById('darkModeButton').textContent = '🌙';
+            document.querySelector('.nav-header').style.backgroundColor = '#fff';
+          }
+        }
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.setAttribute('data-theme', 'dark');
+          document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+          document.getElementById('darkModeButton').textContent = '☀️';
         }
     </script>
   </body>
