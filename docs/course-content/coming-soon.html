@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/styles.css">
   <title>Course Coming Soon</title>
-  <link rel="icon" type="image/x-icon" href="images/icon.ico">
+  <link rel="icon" type="image/x-icon" href="/images/icon.ico">
 <style>
   .dashboard-welcome {
     text-align: left;
@@ -43,14 +43,18 @@
     /*border-radius: 8px;
     /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
   }
+  .container {
+    display: flex;
+  }
   .sidebar {
     width: 250px;
     background: #333;
     color: white;
-    position:absolute;
-    z-index: 1;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
     overflow: auto;
-    height: 100%;
+    height: calc(100% - 60px); 
   }
   .sidebar h2 {
       margin-top:0;
@@ -73,19 +77,28 @@
   .sidebar li a.active {
       background-color:#4CAF50;
       color:white;
-      
   }
   .content { 
-    padding-left: 255px; 
+    margin-left: 250px; 
+    padding-top: 150px; 
   }
-  
+
+  .nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff; 
+  z-index: 1000; 
+}
+
 </style>
 </head>
 <body>
   <div class="nav-header">
     <div class="logo-and-title">
       <a href="/dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
-      <h1>Forklift Driving Course</h1>
+      <h1 id="course-title">Course</h1>
     </div>
     <ul class="nav">
       <li><a href="/dashboard.html">Dashboard</a></li>
@@ -93,50 +106,64 @@
       <li><a href="/courses.html">Courses</a></li>
       <li><a href="/mytrack.html">MyTrack</a></li>
       <li><a href="/profile.html">Profile</a></li>
+      <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
     </ul>
   </div>
-  <div class="sidebar">
-    <h2 style="text-align: center;">Course Content</h2>
-    <ul>
-      <li><a class="active">Introduction</a></li>
-      <li><a>Page 2</a></li>
-      <li><a>Page 3</a></li>
-      <li><a>Page 4</a></li>
-      <li><a>Page 5</a></li>
-    </ul>
-  </div>
+  <div class="container">
+    <div class="sidebar">
+      <h2> </h2>
+      <h2> </h2>
+      <h2 style="text-align: center;">Course Content</h2>
+      <ul>
+        <li><a class="active">Introduction</a></li>
+        <li><a>Page 2</a></li>
+        <li><a>Page 3</a></li>
+        <li><a>Page 4</a></li>
+        <li><a>Page 5</a></li>
+      </ul>
+    </div>
 
-  <div>
-    <div style="text-align: center;" class="content">
-      <h2>Welcome to Our Course!</h2>
-      <p id="course-paragraph">Unfortunately this course isn't set up to see. It would look a lot like this page though! If you want to see a course that is built, check out the Forklift Driving course!</p>
-      <br>
-      <hr>
-      <br>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/VHd7O0yre-k?si=M8aFTn8i07So2pz7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <br>
-      <h3>Quiz</h3>
-      <p>Woah this is a quiz???</p>
-      <input type="radio" id="answer1" name="answer" value="answer1">
-      <label for="answer1">I doubt it</label><br>
-      <input type="radio" id="answer2" name="answer" value="answer2">
-      <label for="answer2">Seems like it</label><br>
-      <input type="radio" id="answer3" name="answer" value="answer3">
-      <label for="answer3">Obviously</label><br>
-      <input type="radio" id="answer4" name="answer" value="answer4">
-      <label for="answer4">Nope</label>
-      <br>
-      <br>
-      <br>
-      <button id="login" class="search-btn">Next Page</button>
+    <div class="content">
+      <div style="text-align: center;">
+        <h2>Welcome to Our Course!</h2>
+        <p id="course-paragraph">Unfortunately this course isn't set up to see. It would look a lot like this page though! If you want to see a course that is built, check out the Forklift Driving course!</p>
+        <br>
+        <hr>
+        <br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/VHd7O0yre-k?si=M8aFTn8i07So2pz7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <br>
+        <h3>Quiz</h3>
+        <p>Woah this is a quiz???</p>
+        <input type="radio" id="answer1" name="answer" value="answer1">
+        <label for="answer1">I doubt it</label><br>
+        <input type="radio" id="answer2" name="answer" value="answer2">
+        <label for="answer2">Seems like it</label><br>
+        <input type="radio" id="answer3" name="answer" value="answer3">
+        <label for="answer3">Obviously</label><br>
+        <input type="radio" id="answer4" name="answer" value="answer4">
+        <label for="answer4">Nope</label>
+        <br>
+        <br>
+        <br>
+        <button id="login" class="search-btn">Next Page</button>
+        <h2></h2>
+      </div>
     </div>
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-    const currentCourse = localStorage.getItem('currentCourse');
-    const courseDescription = document.getElementById('course-paragraph');
-    courseDescription.textContent = `Unfortunately the course, ${currentCourse}, isn't set up to see. It would look a lot like this page though! If you want to see a course that is built, check out the Forklift Driving course!`;
-});
+      const currentCourse = localStorage.getItem('currentCourse');
+      const courseDescription = document.getElementById('course-paragraph');
+      courseDescription.textContent = `Unfortunately the course, ${currentCourse}, isn't set up to see. It would look a lot like this page though! If you want to see a course that is built, check out the Forklift Driving course!`;
+      const courseTitle = document.getElementById('course-title');
+      courseTitle.textContent = currentCourse;
+    });
+    function toggleDarkMode() {
+        var currentTheme = document.body.getAttribute('data-theme');
+        var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme); 
+      }
   </script>
 </body>
 </html>
