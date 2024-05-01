@@ -14,8 +14,8 @@
       border-radius: 5px;
     }
     .quiz-section h1 {
-      text-align: left; /* Align the title to the left */
-      margin-bottom: 20px; /* Add some space below the title */
+      text-align: left;
+      margin-bottom: 20px;
     }
     .quiz-question {
       margin-bottom: 20px;
@@ -25,11 +25,11 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       margin-bottom: 20px;
-      width: calc(50% - 22px); /* Making input fields half of the container width */
+      width: calc(50% - 22px);
       font-size: 16px;
     }
     .quiz-button {
-      background-color: #4CAF50; /* Green */
+      background-color: #4CAF50;
       border: none;
       color: white;
       padding: 15px 30px;
@@ -55,41 +55,33 @@
       <div class="row">
         <div class="col-12">
           <div class="quiz-question">
-            <h4>Question 1</h4>
-            <h6>First Name</h6>
+            <h3>First Name</h3>
             <input type="text" id="nameBox" class="quiz-input" placeholder="Jane Doe">
             <div id="name"></div>
           </div>
 
           <div class="quiz-question">
-            <h4>Question 2</h4>
-            <h6>What skills do you have?</h6>
+            <h3>What skills do you have?</h3>
             <input type="text" id="searchBox1" class="quiz-input" placeholder="Search...">
             <div id="results1"></div>
           </div>
 
           <div class="quiz-question">
-            <h4>Question 3</h4>
-            <h6>What skills would you like to learn?</h6>
+            <h3>What skills would you like to learn?</h3>
             <input type="text" id="searchBox2" class="quiz-input" placeholder="Search...">
             <div id="results2"></div>
           </div>
-
           <div class="quiz-question">
-            <h4>Question 4</h4>
+            <h3>Select Timeframe</h3>
             <div id="timeFrames"></div>
           </div>
-
           <div class="quiz-question">
-            <h4>Question 5</h4>
-            <h6>How many hours a day would you like to dedicate?</h6>
+            <h3>How many hours a day would you like to dedicate?</h3>
             <input type="number" id="dailyHoursInput" class="quiz-input" placeholder="Hours per day" min="1" max="10">
             <div id="dailyHours"></div>
           </div>
-
           <div class="quiz-question">
-            <h4>Question 6</h4>
-            <h6>Input a bio here.</h6>
+            <h3>Input a bio here.</h3>
             <input type="text" id="bioInput" class="quiz-input" placeholder="I am a go getter and would like to work in Finance.">
             <div id="bio"></div>
           </div>

@@ -109,7 +109,6 @@ function addTimeFrame() {
 function addDailyHours() {
   dailyHours = parseInt(document.getElementById("dailyHoursInput").value, 10) || 0;
 }
-  
 
 var skillTimeFrames = {};
 document.getElementById("submit").addEventListener("click", function() {
@@ -117,10 +116,9 @@ document.getElementById("submit").addEventListener("click", function() {
   
   for (var i = 0; i < selectedItems2.length; i++) {
     var skill = selectedItems2[i];
-    var select = document.getElementById('select_' + i); // Select by id
+    var select = document.getElementById('select_' + i);
     console.log(select);
     var timeFrame = select.value;
-
     skillTimeFrames[skill] = timeFrame;
   }
 
