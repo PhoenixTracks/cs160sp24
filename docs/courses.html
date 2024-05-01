@@ -240,7 +240,14 @@ if(localStorage.getItem('theme') === 'dark') {
     var currentTheme = document.body.getAttribute('data-theme');
     var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); 
+    localStorage.setItem('theme', newTheme);
+    if(newTheme === 'dark') {
+      document.getElementById('darkModeButton').textContent = '☀️';
+      document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+    } else {
+      document.getElementById('darkModeButton').textContent = '🌙';
+      document.querySelector('.nav-header').style.backgroundColor = '#fff';
+    }
   }
   document.addEventListener("DOMContentLoaded", function() {
     const hamburger = document.querySelector(".hamburger");
