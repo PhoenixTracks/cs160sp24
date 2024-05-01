@@ -7,7 +7,7 @@ function navigator() {
   }
 }
 
-const textData = [
+const skillsList = [
   "Coding",
   "Excel",
   "Forklift Driving",
@@ -31,7 +31,7 @@ const resultsContainer = document.getElementById("results" + num);
 resultsContainer.innerHTML = "";
 
 const selectedItems = num === 1 ? selectedItems1 : selectedItems2; // Use the appropriate array
-const filteredItems = textData.filter(text => text.toLowerCase().includes(query));
+const filteredItems = skillsList.filter(text => text.toLowerCase().includes(query));
 
 filteredItems.forEach(text => {
     const resultItem = document.createElement("div");
