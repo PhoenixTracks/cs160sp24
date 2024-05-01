@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Career Track Timeline</title>
+  <link rel="icon" type="image/x-icon" href="images/icon.ico">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="images/icon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,14 +16,16 @@
   :root {
   --nav-font-color: #fff; /* Dusty rose for navigation text, adding a touch of uniqueness */
   --section-border-color: #E2C2B9; /* Soft blush for borders, elegant and subtle */
-  --month-bg-color: #f5f3ee; /* Pure white for section backgrounds, clean and classic */
   --profile-border-color: #000; /* Matching the section border for harmony and consistency */
   --plan-bg-color: #25682c; 
   --plan-hover-color: #0f2911; 
   --undo-bg-color: #b4261c;
   --undo-hover-color: #7a1c15;
   --hover-bg-color: #DAA49A; /* Dusty rose for hover states, complements navigation text */
-  --modal-bg-color:#F5F3EE;
+  --modal-bg-color: #F5F3EE;
+  --modal-text-color: #000;
+
+
   }
 
   [data-theme="dark"] {
@@ -35,10 +38,15 @@
     --section-border-color: #7F8C8D;
     --month-bg-color: #34495E;
     --profile-border-color: #BDC3C7;
-    --plan-bg-color: #BDC3C7;
-    --plan-hover-color: #1ABC9C;
-    --undo-bg-color: #4f4949;
-    --undo-hover-color: #cf3c3c;
+    --plan-bg-color: #25682c; 
+    --plan-hover-color: #0f2911; 
+    --undo-bg-color: #b4261c;
+    --undo-hover-color: #7a1c15;
+    --modal-bg-color: #34495E;
+    --modal-text-color: #ECF0F1;
+
+  
+
   }
 
   p {
@@ -275,34 +283,36 @@
     width: 100%; 
     height: 100%; 
     overflow: auto; /* Allows scrolling */
-  }
+}
 
   .modal-content {
-      position: fixed;
-      background-color: #F5F3EE;
-      padding: 40px;
-      border: 1px solid #000;
-      width: 30%; 
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* centers it */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      font-size: 30px;
-      text-align: center;
-  }
+    position: fixed;
+    background-color: var(--modal-bg-color);
+    color: var(--modal-text-color);
+    padding: 40px;
+    border: 1px solid #000;
+    width: 30%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* centers it */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
   .loader {
-      border: 16px solid #f3f3f3; 
-      border-top: 16px solid #E1895D; 
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 2s linear infinite;
+    border: 16px solid #f3f3f3; 
+    border-top: 16px solid #e1895d;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
   }
 
   @keyframes spin {

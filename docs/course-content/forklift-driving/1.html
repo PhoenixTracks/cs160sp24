@@ -1,56 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/styles.css">
-  <title>Forklift Course</title>
-  <link rel="icon" type="image/x-icon" href="images/icon.ico">
-<style>
-  .dashboard-welcome {
-    text-align: left;
-  }
-  .courses-listing {
-    display: grid;
-    grid-template-columns: 0.6fr;
-    gap: 30px;
-    padding-top: 30px;
-    align-items: center;
-    justify-content: center;
-  }
-  .course-card {
-    background-color: #f5f3ee;
-    border-radius: 5px;
-    border-style: solid;
-    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
-    padding: 10px;
-    transition: transform 0.3s ease-in-out;
-  }
-  .course-card img {
-    width: 100%;
-    height: auto;
-    max-width: 100px;
-  }
-  .course-card:hover {
-    transform: translateY(-0.5rem) scale(1.02);
-  }
-  .welcome-message {
-    text-align: center;
-    padding: 10px;
-    font-size: 16px;
-    /*color: #2a2a2a; 
-    /*background-color: #f0f0f0; 
-    /*border-radius: 8px;
-    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
-  }
-  .sidebar {
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <title>Forklift Course</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon.ico">
+  <style>
+    .dashboard-welcome {
+      text-align: left;
+    }
+    .courses-listing {
+      display: grid;
+      grid-template-columns: 0.6fr;
+      gap: 30px;
+      padding-top: 30px;
+      align-items: center;
+      justify-content: center;
+    }
+    .course-card {
+      background-color: #f5f3ee;
+      border-radius: 5px;
+      border-style: solid;
+      box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
+      padding: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .course-card img {
+      width: 100%;
+      height: auto;
+      max-width: 100px;
+    }
+    .course-card:hover {
+      transform: translateY(-0.5rem) scale(1.02);
+    }
+    .welcome-message {
+      text-align: center;
+      padding: 10px;
+      font-size: 16px;
+      /*color: #2a2a2a; 
+      /*background-color: #f0f0f0; 
+      /*border-radius: 8px;
+      /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    }
+    .sidebar {
     width: 250px;
     background: #333;
     color: white;
-    position:absolute;
-    z-index: 1;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
     overflow: auto;
-    height: 100%;
+    height: calc(100% - 60px); 
   }
   .sidebar h2 {
       margin-top:0;
@@ -73,75 +74,102 @@
   .sidebar li a.active {
       background-color:#4CAF50;
       color:white;
-      
   }
   .content { 
-    padding-left: 255px; 
+    margin-left: 250px; 
+    padding-top: 150px; 
   }
+
+  .nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff; 
+  z-index: 1000; 
+}
+
   
-</style>
-</head>
-<body>
-  <div class="nav-header">
-    <div class="logo-and-title">
-      <a href="/dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
-      <h1>Forklift Driving Course</h1>
+
+    
+  </style>
+  </head>
+  <body>
+    <div class="nav-header">
+      <div class="logo-and-title">
+        <a href="/dashboard.html"><img src="/images/logo.png" alt="Company Logo" style="height: 100px;"></a>
+        <h1>Forklift Driving Course</h1>
+      </div>
+      <ul class="nav">
+        <li><a href="/dashboard.html">Dashboard</a></li>
+        <li><a href="/jobs.html">Jobs</a></li>
+        <li><a href="/courses.html">Courses</a></li>
+        <li><a href="/mytrack.html">MyTrack</a></li>
+        <li><a href="/profile.html">Profile</a></li>
+        <li><a id="darkModeButton" href="#" onclick="toggleDarkMode()">🌙</a></li>
+      </ul>
     </div>
-    <ul class="nav">
-      <li><a href="/dashboard.html">Dashboard</a></li>
-      <li><a href="/jobs.html">Jobs</a></li>
-      <li><a href="/courses.html">Courses</a></li>
-      <li><a href="/mytrack.html">MyTrack</a></li>
-      <li><a href="/profile.html">Profile</a></li>
-      <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
-    </ul>
-  </div>
-  <div class="sidebar">
-    <h2 style="text-align: center;">Course Content</h2>
-    <ul>
-      <li><a class="active">Basics of Forklifts</a></li>
-      <li><a href="/course-content/forklift-driving/2.html">Forklift Safety</a></li>
-      <li><a href="/course-content/forklift-driving/3.html">Page 3</a></li>
-      <li><a href="/course-content/forklift-driving/4.html">Page 4</a></li>
-      <li><a href="/course-content/forklift-driving/5.html">Page 5</a></li>
-    </ul>
-  </div>
-
-  <div>
-    <div style="text-align: center;" class="content">
-      <h2>Welcome to the Forklift Driving Course!</h2>
-      <p>This course covers everything from basic forklift design and operation to advanced safety protocols and handling techniques. Whether you're new to forklift driving or looking to refresh your skills, our expert instructors will guide you through hands-on training and interactive lessons. By the end of this course, you'll be equipped with the knowledge and confidence to operate forklifts safely and efficiently in any warehouse or industrial setting.</p>
-      <br>
-      <hr>
-      <br>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/xD9CYjql0Pk?si=epCN7qJXV0SbddBU&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <br>
-      <h3>Quiz</h3>
-      <p>What is the first thing you should do before driving a forklift?</p>
-      <input type="radio" id="answer1" name="answer" value="answer1">
-      <label for="answer1">Check the forklift for any damage</label><br>
-      <input type="radio" id="answer2" name="answer" value="answer2">
-      <label for="answer2">Start the forklift</label><br>
-      <input type="radio" id="answer3" name="answer" value="answer3">
-      <label for="answer3">Drive the forklift</label><br>
-      <input type="radio" id="answer4" name="answer" value="answer4">
-      <label for="answer4">Check the forklift for any damage</label>
-      <br>
-      <br>
-      <br>
-      <button id="login" class="search-btn" onclick="window.location.href='/forklift-driving/2.html'">Next Page</button>
+    <div class="sidebar">
+      <h2> </h2>
+      <h2> </h2>
+      <h2 style="text-align: center;">Course Content</h2>
+      <ul>
+        <li><a class="active">Basics of Forklifts</a></li>
+        <li><a href="/course-content/forklift-driving/2.html">Forklift Safety</a></li>
+        <li><a href="/course-content/forklift-driving/3.html">Page 3</a></li>
+        <li><a href="/course-content/forklift-driving/4.html">Page 4</a></li>
+        <li><a href="/course-content/forklift-driving/5.html">Page 5</a></li>
+      </ul>
     </div>
-  </div>
+
+    <div>
+      <div style="text-align: center;" class="content">
+        <h2>Welcome to the Forklift Driving Course!</h2>
+        <p>This course covers everything from basic forklift design and operation to advanced safety protocols and handling techniques. Whether you're new to forklift driving or looking to refresh your skills, our expert instructors will guide you through hands-on training and interactive lessons. By the end of this course, you'll be equipped with the knowledge and confidence to operate forklifts safely and efficiently in any warehouse or industrial setting.</p>
+        <br>
+        <hr>
+        <br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xD9CYjql0Pk?si=epCN7qJXV0SbddBU&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <br>
+        <h3>Quiz</h3>
+        <p>What is the first thing you should do before driving a forklift?</p>
+        <input type="radio" id="answer1" name="answer" value="answer1">
+        <label for="answer1">Check the forklift for any damage</label><br>
+        <input type="radio" id="answer2" name="answer" value="answer2">
+        <label for="answer2">Start the forklift</label><br>
+        <input type="radio" id="answer3" name="answer" value="answer3">
+        <label for="answer3">Drive the forklift</label><br>
+        <input type="radio" id="answer4" name="answer" value="answer4">
+        <label for="answer4">Check the forklift for any damage</label>
+        <br>
+        <br>
+        <br>
+        <button id="login" class="search-btn" onclick="window.location.href='2.html'">Next Page</button>
+        <h2></h2>
+      </div>
+    </div>
 
 
 
-  <script>
-    function toggleDarkMode() {
-        var currentTheme = document.body.getAttribute('data-theme');
-        var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme); 
-      }
-  </script>
-</body>
-</html>
+    <script>
+      function toggleDarkMode() {
+          var currentTheme = document.body.getAttribute('data-theme');
+          var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          document.body.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          if(newTheme === 'dark') {
+            document.getElementById('darkModeButton').textContent = '☀️';
+            document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+          } else {
+            document.getElementById('darkModeButton').textContent = '🌙';
+            document.querySelector('.nav-header').style.backgroundColor = '#fff';
+          }
+        }
+        if (localStorage.getItem('theme') === 'dark') {
+          document.body.setAttribute('data-theme', 'dark');
+          document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
+          document.getElementById('darkModeButton').textContent = '☀️';
+        }
+    </script>
+  </body>
+  </html>
