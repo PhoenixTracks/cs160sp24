@@ -105,7 +105,7 @@
     <div id="results2"></div>
   </div>
   <div class="quiz-question">
-    <h4>Question 4</h4>
+    <h3>Select a Timeframe for Each Skill</h3>
     <div id="timeFrames"></div>
   </div>
   <div class="quiz-question">
@@ -121,7 +121,6 @@
 </div>
 
 <script src="script.js"></script>
-
 
 <script>
   document.getElementById('nameBox').value = localStorage.getItem('name')
@@ -150,7 +149,7 @@
       skillsLearnList.appendChild(li);
     });
 
-    Object.keys(timeFrames).forEach(function(skill) {
+    Object.keys(timeFrames).forEach(skill => {
       var li = document.createElement('li');
       li.textContent = skill + ': ' + timeFrames[skill] + ' month(s)';
       timeFramesList.appendChild(li);

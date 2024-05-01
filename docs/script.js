@@ -21,53 +21,51 @@ const skillsList = [
 ];
 
 
-let selectedItems1 = []; 
-let selectedItems2 = []; 
-let dailyHours = 0;
+let selectedItems1 = JSON.parse(localStorage.getItem('selectedItems1')) || []; 
+let selectedItems2 = JSON.parse(localStorage.getItem('selectedItems2')) || []; 
+let dailyHours = localStorage.getItem('dailyHours') || 0;
 
 function search(num) {
-const query = document.getElementById("searchBox" + num).value.trim().toLowerCase();
-const resultsContainer = document.getElementById("results" + num);
-resultsContainer.innerHTML = "";
+  const query = document.getElementById("searchBox" + num).value.trim().toLowerCase();
+  const resultsContainer = document.getElementById("results" + num);
+  resultsContainer.innerHTML = "";
 
-const selectedItems = num === 1 ? selectedItems1 : selectedItems2; // Use the appropriate array
-const filteredItems = skillsList.filter(text => text.toLowerCase().includes(query));
-
-filteredItems.forEach(text => {
-    const resultItem = document.createElement("div");
-    resultItem.textContent = text;
-    resultItem.classList.add("result-item");
-    if (selectedItems.includes(text)) {
-        resultItem.classList.add("selected");
-    }
-    resultItem.addEventListener("click", function() {
-        const index = selectedItems.indexOf(text);
-        if (index === -1) {
-            selectedItems.push(text); 
-            resultItem.classList.add("selected");
-        } else {
-            selectedItems.splice(index, 1); 
-            resultItem.classList.remove("selected");
-        }
-        addTimeFrame();
-    });
-    resultsContainer.appendChild(resultItem);
-});
-
-selectedItems.forEach(text => {
-    if (!filteredItems.includes(text)) {
-        const resultItem = document.createElement("div");
-        resultItem.textContent = text;
-        resultItem.classList.add("result-item", "selected");
-        resultItem.addEventListener("click", function() {
-            const index = selectedItems.indexOf(text);
-            selectedItems.splice(index, 1); 
-            resultItem.remove();
-        });
-        resultsContainer.appendChild(resultItem);
-    }
-});
-addTimeFrame();
+  const selectedItems = num === 1 ? selectedItems1 : selectedItems2; // Use the appropriate array
+  const filteredItems = skillsList.filter(text => text.toLowerCase().includes(query));
+  filteredItems.forEach(text => {
+      const resultItem = document.createElement("div");
+      resultItem.textContent = text;
+      resultItem.classList.add("result-item");
+      if (selectedItems.includes(text)) {
+          resultItem.classList.add("selected");
+      }
+      resultItem.addEventListener("click", function() {
+          const index = selectedItems.indexOf(text);
+          if (index === -1) {
+              selectedItems.push(text); 
+              resultItem.classList.add("selected");
+          } else {
+              selectedItems.splice(index, 1); 
+              resultItem.classList.remove("selected");
+          }
+          addTimeFrame();
+      });
+      resultsContainer.appendChild(resultItem);
+  });
+  selectedItems.forEach(text => {
+      if (!filteredItems.includes(text)) {
+          const resultItem = document.createElement("div");
+          resultItem.textContent = text;
+          resultItem.classList.add("result-item", "selected");
+          resultItem.addEventListener("click", function() {
+              const index = selectedItems.indexOf(text);
+              selectedItems.splice(index, 1); 
+              resultItem.remove();
+          });
+          resultsContainer.appendChild(resultItem);
+      }
+  });
+  addTimeFrame();
 }
 
 document.getElementById("searchBox1").addEventListener("input", function() {
@@ -75,7 +73,7 @@ document.getElementById("searchBox1").addEventListener("input", function() {
 });
 
 document.getElementById("searchBox2").addEventListener("input", function() {
-search(2);
+  search(2);
 });
 document.getElementById("dailyHoursInput").addEventListener("input", addDailyHours);
 
