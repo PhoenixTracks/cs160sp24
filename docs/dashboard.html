@@ -256,14 +256,18 @@
 
 </style>
 </head>
+
 <body>
 
 <div class="nav-header">
+  
   <div class="logo-and-title">
     <a href="dashboard"><img src="images/logo.png" alt="Company Logo" style="height: 100px;"></a>
-    <h1>Dashboard</h1>
+   <h1>Dashboard</h1>
   </div>
+  <button class="hamburger">☰</button> 
   <ul class="nav">
+   
     <li><a href="dashboard" class="active-nav">Dashboard</a></li>
     <li><a href="jobs">Jobs</a></li>
     <li><a href="courses">Courses</a></li>
@@ -516,5 +520,14 @@ function updateCourseProgress(course) {
 }
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav");
+
+    hamburger.addEventListener("click", function() {
+        navMenu.classList.toggle("active");  // Toggle visibility
+        console.log("Toggle class 'active': ", navMenu.classList.contains("active"));
+    });
+});
   </script>
   
