@@ -482,7 +482,13 @@ function loadCourseProgress() {
 
 
 function goToCourse(course) {
-  // TODO
+  console.log(course);
+  if (course === 'Forklift Driving') {
+    window.location.href = `/course-content/forklift-driving/1.html`;
+  } else {
+    localStorage.setItem('currentCourse', course);
+    window.location.href = `/course-content/coming-soon.html`;
+  }
 }
 
 function getCourseProgress(course) {

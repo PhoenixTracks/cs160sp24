@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/styles.css">
-  <title>Courses</title>
+  <title>Course Coming Soon</title>
   <link rel="icon" type="image/x-icon" href="images/icon.ico">
 <style>
   .dashboard-welcome {
@@ -98,44 +98,45 @@
   <div class="sidebar">
     <h2 style="text-align: center;">Course Content</h2>
     <ul>
-      <li><a class="active">Basics of Forklifts</a></li>
-      <li><a href="/course-content/forklift-driving/2.html">Forklift Safety</a></li>
-      <li><a href="/course-content/forklift-driving/3.html">Page 3</a></li>
-      <li><a href="/course-content/forklift-driving/4.html">Page 4</a></li>
-      <li><a href="/course-content/forklift-driving/5.html">Page 5</a></li>
+      <li><a class="active">Introduction</a></li>
+      <li><a>Page 2</a></li>
+      <li><a>Page 3</a></li>
+      <li><a>Page 4</a></li>
+      <li><a>Page 5</a></li>
     </ul>
   </div>
 
   <div>
     <div style="text-align: center;" class="content">
-      <h2>Welcome to the Forklift Driving Course!</h2>
-      <p>This course covers everything from basic forklift design and operation to advanced safety protocols and handling techniques. Whether you’re new to forklift driving or looking to refresh your skills, our expert instructors will guide you through hands-on training and interactive lessons. By the end of this course, you’ll be equipped with the knowledge and confidence to operate forklifts safely and efficiently in any warehouse or industrial setting.</p>
+      <h2>Welcome to Our Course!</h2>
+      <p id="course-paragraph">Unfortunately this course isn't set up to see. It would look a lot like this page though! If you want to see a course that is built, check out the Forklift Driving course!</p>
       <br>
       <hr>
       <br>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/xD9CYjql0Pk?si=epCN7qJXV0SbddBU&amp;start=10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VHd7O0yre-k?si=M8aFTn8i07So2pz7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <br>
       <h3>Quiz</h3>
-      <p>What is the first thing you should do before driving a forklift?</p>
+      <p>Woah this is a quiz???</p>
       <input type="radio" id="answer1" name="answer" value="answer1">
-      <label for="answer1">Check the forklift for any damage</label><br>
+      <label for="answer1">I doubt it</label><br>
       <input type="radio" id="answer2" name="answer" value="answer2">
-      <label for="answer2">Start the forklift</label><br>
+      <label for="answer2">Seems like it</label><br>
       <input type="radio" id="answer3" name="answer" value="answer3">
-      <label for="answer3">Drive the forklift</label><br>
+      <label for="answer3">Obviously</label><br>
       <input type="radio" id="answer4" name="answer" value="answer4">
-      <label for="answer4">Check the forklift for any damage</label>
+      <label for="answer4">Nope</label>
       <br>
       <br>
       <br>
-      <button id="login" class="search-btn" onclick="window.location.href='/forklift-driving/2.html'">Next Page</button>
+      <button id="login" class="search-btn">Next Page</button>
     </div>
   </div>
-
-
-
   <script>
-  
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const currentCourse = localStorage.getItem('currentCourse');
+    const courseDescription = document.getElementById('course-paragraph');
+    courseDescription.textContent = `Unfortunately the course, ${currentCourse}, isn't set up to see. It would look a lot like this page though! If you want to see a course that is built, check out the Forklift Driving course!`;
+});
   </script>
 </body>
 </html>
