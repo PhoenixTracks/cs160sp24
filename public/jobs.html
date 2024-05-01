@@ -226,6 +226,7 @@ textarea {
 
       document.querySelector('.popup-background').style.display = 'flex';
       const mySkills = localStorage.getItem('selectedItems1');
+      const name = localStorage.getItem('name');
 
       const response = await fetch (
         //'https://noggin.rea.gent/ugliest-butterfly-8606', real API
@@ -242,6 +243,7 @@ textarea {
             "company": company,
             "description": description,
             "skills": mySkills,
+            "name": name
           }),
         }
       ).then(response => response.text());
