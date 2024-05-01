@@ -19,8 +19,8 @@
   --nav-bg-color:   #D63964; /* Light creamy peach for navigation, offering a gentle visual appeal */
   --nav-font-color: #fff; /* Dusty rose for navigation text, adding a touch of uniqueness */
   --section-border-color: #E2C2B9; /* Soft blush for borders, elegant and subtle */
-  --month-bg-color: #C97B63; /* Pure white for section backgrounds, clean and classic */
-  --profile-border-color: #E2C2B9; /* Matching the section border for harmony and consistency */
+  --month-bg-color: #f5f3ee; /* Pure white for section backgrounds, clean and classic */
+  --profile-border-color: #000; /* Matching the section border for harmony and consistency */
   --plan-bg-color: #25682c; 
   --plan-hover-color: #0f2911; 
   --undo-bg-color: #b4261c;
@@ -43,11 +43,13 @@
     --undo-hover-color: #cf3c3c;
   }
 
-  /* body, h1, h2, h3, p {
-    font-family: "Poppins";
-    background-color: var(--background-color);
-    color: var(--font-color);
-  } */
+  p {
+    font-size: 23px;
+    text-align: center;
+  }
+  h1 {
+    text-align: center;
+  } 
 
   .poppins-thin {
   font-family: "Poppins", sans-serif;
@@ -199,24 +201,25 @@
   .month-container {
     flex: 1 1 30%;
     max-width: 1500px;
-    padding: 10px;
+    padding: 20px;
+    box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
     box-sizing: border-box;
-    border: 10px solid var(--profile-border-color);
+    border: 1px solid var(--profile-border-color);
     background-color: var(--month-bg-color);
     margin-right: 1.5%;  /* horizontal space between containers */
     margin-bottom: 20px;  /* vertical space between containers */
-    border-radius: 15px;
+    border-radius: 5px;
   }
   .timeline-row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: stretch;
   }
   .month-header {
     padding: 10px;
     font-size: 2.5em;
-    color: #fff;
+    color: #000;
     margin-bottom: 5px;
     text-align: center;
   }
@@ -328,8 +331,8 @@
   </ul>
 </div>
 <div style="padding: 20px" id="timelineDisplay"> 
-  <h2>Career Track Timeline</h2>
-  <h3>Not sure where to start? Don't worry - we have created a personalized career development timeline just for you!</h3>
+  <h1>Your Personalized Career Timeline</h1>
+  <p>Not sure where to start? Don't worry - we can create a more detailed plan for you!</p>
   <div id="buttonContainer" style="margin-top: 20px;">
     <button class="plan-button" onclick="setDedication()">Generate a More Detailed Plan</button>
     <button id="undoButton" style="display: none;" onclick="undoDetailedPlan()">Undo Detailed Plan</button>
