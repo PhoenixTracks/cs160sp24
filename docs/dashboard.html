@@ -7,7 +7,35 @@
   <title>Dashboard</title>
   <link rel="icon" type="image/x-icon" href="images/icon.ico">
 <style>
-  
+  :root {
+    --nav-font-color: #fff; /* Dusty rose for navigation text, adding a touch of uniqueness */
+    --section-border-color: #E2C2B9; /* Soft blush for borders, elegant and subtle */
+    --month-bg-color: #f5f3ee; /* Pure white for section backgrounds, clean and classic */
+    --profile-border-color: #000; /* Matching the section border for harmony and consistency */
+    --plan-bg-color: #25682c; 
+    --plan-hover-color: #0f2911; 
+    --undo-bg-color: #b4261c;
+    --undo-hover-color: #7a1c15;
+    --hover-bg-color: #DAA49A; /* Dusty rose for hover states, complements navigation text */
+    --modal-bg-color:#F5F3EE;
+  }
+
+  [data-theme="dark"] {
+    --background-color: #2C3E50;
+    --font-color:#F5F3EE;
+    --modal-bg-color:#2C3E50;
+    --header-bg-color: #34495E;
+    --nav-bg-color: #16A085;
+    --nav-font-color: #ECF0F1;
+    --section-border-color: #7F8C8D;
+    --month-bg-color: #34495E;
+    --profile-border-color: #BDC3C7;
+    --plan-bg-color: #BDC3C7;
+    --plan-hover-color: #1ABC9C;
+    --undo-bg-color: #4f4949;
+    --undo-hover-color: #cf3c3c;
+  }
+
 
   .dashboard-welcome {
     display: flex;
@@ -21,7 +49,7 @@
     padding: 20px;
     border: 1px solid ;
     border-radius: 5px;
-    background-color: var(--section-bg-color);
+    background-color: var(--month-bg-color);
   }
   .dashboard-content {
     display: flex;
@@ -42,9 +70,11 @@
       flex-basis: 48%; 
       padding: 20px;
       margin: 10px;
-      border: 1px solid var(--section-border-color);
+      border: 1px solid black;
       border-radius: 5px;
-      background-color: var(--section-bg-color);
+      background-color: var(--month-bg-color);
+      box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
+
   }
 
   @media (max-width: 768px) {
