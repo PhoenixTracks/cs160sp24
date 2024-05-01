@@ -201,6 +201,29 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) inset;
 }
 
+.gotocourse-btn {
+    padding: 8px 16px;
+    margin-left: 10px; 
+    background-color: var(--icon-bg-color); 
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.gotocourse-btn:hover, .gotocourse-btn:focus {
+    background-color: var(--hover-bg-color); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.gotocourse-btn:active {
+     background-color: #B54A30; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
 </style>
 </head>
 <body>
@@ -413,15 +436,24 @@ function loadCourseProgress() {
         updateButton.className = 'update-btn'; 
         updateButton.onclick = function() { updateCourseProgress(course); };
 
+        const goToCourseBtn = document.createElement('button');
+        goToCourseBtn.textContent = 'Go To Course';
+        goToCourseBtn.className = 'update-btn gotocourse-btn'; 
+        goToCourseBtn.onclick = function() { goToCourse(course); };
+
+
         progressContainer.appendChild(progressBar);
         courseElement.appendChild(progressContainer);
         courseElement.appendChild(updateButton);
+        courseElement.appendChild(goToCourseBtn);
         coursesContainer.appendChild(courseElement);
     });
 }
 
 
-
+function goToCourse(course) {
+  // TODO
+}
 
 function getCourseProgress(course) {
   const progressData = JSON.parse(localStorage.getItem('courseProgress')) || {};
