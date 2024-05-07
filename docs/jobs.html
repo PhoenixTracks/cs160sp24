@@ -8,13 +8,13 @@
   <link rel="icon" type="image/x-icon" href="images/icon.ico">
 <style>
    :root {
-    --card-background: #f5f3ee; /* Default background color for light mode */
-    --text-color: #000; /* Default text color for light mode */
+    --card-background: #f5f3ee; 
+    --text-color: #000; 
   }
 
   [data-theme='dark'] {
-    --card-background: #2C3E50; /* Dark mode background color */
-    --text-color: #fff; /* Dark mode text color */
+    --card-background: #2C3E50; 
+    --text-color: #fff; 
   }
   p {
     font-size: 23px;
@@ -129,7 +129,7 @@ textarea {
       <li><a href="courses" class="nav-btn">Courses</a></li>
       <li><a href="mytrack" class="nav-btn">MyTrack</a></li>
       <li><a href="profile" class="nav-btn">Profile</a></li>
-      <li><a id="darkModeButton" onclick="toggleDarkMode()">🌙</a></li>
+      <li><a href="#" onclick="toggleDarkMode()">🌙</a></li>
     </ul>
   </div>
 
@@ -371,14 +371,7 @@ textarea {
     var currentTheme = document.body.getAttribute('data-theme');
     var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    if(newTheme === 'dark') {
-      document.getElementById('darkModeButton').textContent = '☀️';
-      document.querySelector('.nav-header').style.backgroundColor = '#2C3E50';
-    } else {
-      document.getElementById('darkModeButton').textContent = '🌙';
-      document.querySelector('.nav-header').style.backgroundColor = '#fff';
-    }
+    localStorage.setItem('theme', newTheme); 
   }
   document.addEventListener("DOMContentLoaded", function() {
     const hamburger = document.querySelector(".hamburger");
