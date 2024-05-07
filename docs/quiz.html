@@ -92,6 +92,40 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load existing profile information from local storage
+      document.getElementById('nameBox').value = localStorage.getItem('name');
+      document.getElementById('bioInput').value = localStorage.getItem('bio');
+      // Load existing skills and timeframes
+      // Add code here to populate existing skills and timeframes
+    });
+  
+    // Function to handle profile update
+    function updateProfile() {
+      // Gather updated information from input fields
+      var newName = document.getElementById('nameBox').value;
+      var newBio = document.getElementById('bioInput').value;
+      // Gather updated skills and timeframes
+      // Add code here to gather updated skills and timeframes
+  
+      // Update local storage with the new information
+      localStorage.setItem('name', newName);
+      localStorage.setItem('bio', newBio);
+      // Update skills and timeframes in local storage
+      // Add code here to update skills and timeframes
+  
+      // Optionally, you can display a success message or perform other actions
+      window.location.href = 'dashboard.html';
+    }
+  
+    // Event listener for the "Update Profile" button
+    document.getElementById('submit').addEventListener('click', function() {
+      updateProfile();
+    });
+  </script>
+  
   <script src="script.js"></script>      
 </body>
 </html>
