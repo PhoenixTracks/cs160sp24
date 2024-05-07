@@ -36,6 +36,7 @@ function search(num) {
       const resultItem = document.createElement("div");
       resultItem.textContent = text;
       resultItem.classList.add("result-item");
+      //resultItem.style.color = black;
       if (selectedItems.includes(text)) {
           resultItem.classList.add("selected");
       }
