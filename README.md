@@ -26,8 +26,8 @@ Welcome to Phoenix Tracks, a transformative platform designed to assist non-viol
 
 4. Access the Platform 
    
-Visit localhost:8000 on your browser to access the platform locally.
-Alternatively, access our live platform at https://phoenixtracks.github.io/cs160sp24/
+   Visit localhost:8000 on your browser to access the platform locally.
+   Alternatively, access our live platform at https://phoenixtracks.github.io/cs160sp24/
 
 ## Contributors
 
