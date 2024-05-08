@@ -29,14 +29,14 @@ Welcome to Phoenix Tracks, a transformative platform designed to assist non-viol
 Visit localhost:8000 on your browser to access the platform locally.
 Alternatively, access our live platform at https://phoenixtracks.github.io/cs160sp24/
 
-Contributors
+## Contributors
 
 
-Tanvi Khot
-Allie Reyes
-Kavan Mehrizi
-Quang Vo
-Bryan Ventura Benitez
+- Tanvi Khot
+- Allie Reyes
+- Kavan Mehrizi
+- Quang Vo
+- Bryan Ventura Benitez
 
 
 
