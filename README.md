@@ -33,7 +33,7 @@ Welcome to Phoenix Tracks, a transformative platform designed to assist non-viol
 
 
 - Tanvi Khot
-- Allie Reyes
+- Alexandra Reyes
 - Kavan Mehrizi
 - Quang Vo
 - Bryan Ventura Benitez
